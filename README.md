@@ -1,4 +1,4 @@
-- ![Project Banner](./public/banner.png)
+- ![IRON LADY](./public/logo.png)
 
 
 - [Overview](./docs/overview.md)
