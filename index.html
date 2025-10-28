@@ -1016,6 +1016,27 @@
             width: 0%;
             transition: width 0.5s ease;
         }
+
+
+        .video-container {
+            position: relative;
+            background-color: #f5f5f5;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .youtube-player {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                height: 250px;
+            }
+        }
         
         /* Accessibility improvements */
         .sr-only {
@@ -1308,111 +1329,116 @@
             </section>
 
             <!-- Video Training Page -->
-            <section id="video-training" class="page" aria-labelledby="video-training-heading">
-                <div class="video-training-page">
-                    <h2 id="video-training-heading">Video Training Modules</h2>
-                    
-                    <div class="video-player-section">
-                        <div class="video-placeholder">
+        <section id="video-training" class="page" aria-labelledby="video-training-heading">
+            <div class="video-training-page">
+                <h2 id="video-training-heading">Video Training Modules</h2>
+                
+                <div class="video-player-section">
+                    <div class="video-container" id="videoContainer">
+                        <div class="video-placeholder" id="videoPlaceholder">
                             <i class="fas fa-play-circle"></i>
                             <div class="video-placeholder-text">Select a video to start learning</div>
                         </div>
-                        <div class="video-info">
-                            <h3>Welcome to Video Training</h3>
-                            <p>Select a video from the categories below to begin your training journey. Track your progress as you complete each module.</p>
-                        </div>
-                        <div class="video-progress">
-                            <div class="progress-label">
-                                <span>Overall Progress</span>
-                                <span id="video-progress-percentage">0%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" id="video-progress-fill" style="width: 0%"></div>
-                            </div>
+                        <div class="youtube-player" id="youtubePlayer" style="display: none;">
+                            <iframe id="videoFrame" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
-                    
-                    <div class="video-categories">
-                        <div class="video-category">
-                            <h3>Sales Fundamentals</h3>
-                            <ul class="video-list">
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="https://youtu.be/0GEC1WNvF_o">Introduction to Sales Process</a>
-                                    <span class="video-duration">15 min</span>
-                                </li>
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Effective Prospecting Techniques</a>
-                                    <span class="video-duration">22 min</span>
-                                </li>
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Building Rapport with Clients</a>
-                                    <span class="video-duration">18 min</span>
-                                </li>
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Understanding Customer Needs</a>
-                                    <span class="video-duration">25 min</span>
-                                </li>
-                            </ul>
+                    <div class="video-info">
+                        <h3 id="videoTitle">Welcome to Video Training</h3>
+                        <p id="videoDescription">Select a video from the categories below to begin your training journey. Track your progress as you complete each module.</p>
+                    </div>
+                    <div class="video-progress">
+                        <div class="progress-label">
+                            <span>Overall Progress</span>
+                            <span id="video-progress-percentage">0%</span>
                         </div>
-                        
-                        <div class="video-category">
-                            <h3>Advanced Techniques</h3>
-                            <ul class="video-list">
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Advanced Negotiation Strategies</a>
-                                    <span class="video-duration">30 min</span>
-                                </li>
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Handling Objections Effectively</a>
-                                    <span class="video-duration">28 min</span>
-                                </li>
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Closing Techniques That Work</a>
-                                    <span class="video-duration">20 min</span>
-                                </li>
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Upselling and Cross-selling</a>
-                                    <span class="video-duration">24 min</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div class="video-category">
-                            <h3>Product Knowledge</h3>
-                            <ul class="video-list">
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Product Features and Benefits</a>
-                                    <span class="video-duration">35 min</span>
-                                </li>
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Competitive Analysis</a>
-                                    <span class="video-duration">27 min</span>
-                                </li>
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Value Proposition Development</a>
-                                    <span class="video-duration">22 min</span>
-                                </li>
-                                <li class="video-item">
-                                    <i class="fas fa-play-circle"></i>
-                                    <a href="#">Case Studies and Success Stories</a>
-                                    <span class="video-duration">32 min</span>
-                                </li>
-                            </ul>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="video-progress-fill" style="width: 0%"></div>
                         </div>
                     </div>
                 </div>
-            </section>
+                
+                <div class="video-categories">
+                    <div class="video-category">
+                        <h3>Sales Fundamentals</h3>
+                        <ul class="video-list">
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="0GEC1WNvF_o" data-title="Day 1 Masterclass" data-description="Learn the fundamentals of sales process and communication techniques.">Day 1 Masterclass</a>
+                                <span class="video-duration">15 min</span>
+                            </li>
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="u72QrFA8Ed8" data-title="Day 2 Masterclass" data-description="Advanced sales techniques and customer engagement strategies.">Day 2 Masterclass</a>
+                                <span class="video-duration">22 min</span>
+                            </li>
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="roAQLODR-TI" data-title="Day 3 Masterclass" data-description="Mastering objection handling and closing techniques.">Day 3 Masterclass</a>
+                                <span class="video-duration">18 min</span>
+                            </li>
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="dQw4w9WgXcQ" data-title="Understanding Customer Needs" data-description="Learn how to identify and address customer pain points effectively.">Understanding Customer Needs</a>
+                                <span class="video-duration">25 min</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="video-category">
+                        <h3>Advanced Techniques</h3>
+                        <ul class="video-list">
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="advanced-negotiation" data-title="Advanced Negotiation Strategies" data-description="Master the art of negotiation in complex sales scenarios.">Advanced Negotiation Strategies</a>
+                                <span class="video-duration">30 min</span>
+                            </li>
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="objection-handling" data-title="Handling Objections Effectively" data-description="Techniques to overcome common customer objections.">Handling Objections Effectively</a>
+                                <span class="video-duration">28 min</span>
+                            </li>
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="closing-techniques" data-title="Closing Techniques That Work" data-description="Proven methods to successfully close sales deals.">Closing Techniques That Work</a>
+                                <span class="video-duration">20 min</span>
+                            </li>
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="upselling-cross" data-title="Upselling and Cross-selling" data-description="Strategies to increase deal size through upselling and cross-selling.">Upselling and Cross-selling</a>
+                                <span class="video-duration">24 min</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="video-category">
+                        <h3>Product Knowledge</h3>
+                        <ul class="video-list">
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="product-features" data-title="Product Features and Benefits" data-description="Deep dive into product features and their customer benefits.">Product Features and Benefits</a>
+                                <span class="video-duration">35 min</span>
+                            </li>
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="competitive-analysis" data-title="Competitive Analysis" data-description="Understanding our competitive landscape and positioning.">Competitive Analysis</a>
+                                <span class="video-duration">27 min</span>
+                            </li>
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="value-proposition" data-title="Value Proposition Development" data-description="Creating compelling value propositions for different customer segments.">Value Proposition Development</a>
+                                <span class="video-duration">22 min</span>
+                            </li>
+                            <li class="video-item">
+                                <i class="fas fa-play-circle"></i>
+                                <a href="#" data-video-id="case-studies" data-title="Case Studies and Success Stories" data-description="Real-world examples of successful implementations and results.">Case Studies and Success Stories</a>
+                                <span class="video-duration">32 min</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
             <!-- Login Page -->
             <section id="login" class="page" aria-labelledby="login-heading">
@@ -1871,6 +1897,8 @@
         const VideoTrainingManager = {
             totalVideos: 12,
             completedVideos: 0,
+            currentVideoId: null,
+            watchedVideos: new Set(),
             
             init: function() {
                 // Load saved progress from localStorage
@@ -1880,7 +1908,10 @@
                 document.querySelectorAll('.video-item a').forEach(link => {
                     link.addEventListener('click', (e) => {
                         e.preventDefault();
-                        this.playVideo(e.target.textContent);
+                        const videoId = e.target.getAttribute('data-video-id');
+                        const title = e.target.getAttribute('data-title');
+                        const description = e.target.getAttribute('data-description');
+                        this.playVideo(videoId, title, description);
                     });
                 });
                 
@@ -1888,40 +1919,68 @@
                 this.updateProgressBar();
             },
             
-            playVideo: function(videoTitle) {
-                const videoPlaceholder = document.querySelector('.video-placeholder');
-                const videoInfo = document.querySelector('.video-info');
+            playVideo: function(videoId, title, description) {
+                const videoPlaceholder = document.getElementById('videoPlaceholder');
+                const youtubePlayer = document.getElementById('youtubePlayer');
+                const videoFrame = document.getElementById('videoFrame');
+                const videoTitle = document.getElementById('videoTitle');
+                const videoDescription = document.getElementById('videoDescription');
                 
-                // Update video placeholder
-                videoPlaceholder.innerHTML = `
-                    <i class="fas fa-play-circle"></i>
-                    <div class="video-placeholder-text">Now Playing: ${videoTitle}</div>
-                `;
+                // Hide placeholder and show YouTube player
+                videoPlaceholder.style.display = 'none';
+                youtubePlayer.style.display = 'block';
                 
                 // Update video info
-                videoInfo.innerHTML = `
-                    <h3>${videoTitle}</h3>
-                    <p>This training video is part of our comprehensive sales development program. Complete this module to track your progress.</p>
-                `;
+                videoTitle.textContent = title;
+                videoDescription.textContent = description;
                 
-                // Mark as completed after a delay (simulating video completion)
-                setTimeout(() => {
-                    this.completeVideo();
-                }, 3000);
+                // Set the YouTube video URL
+                if (this.isValidYouTubeId(videoId)) {
+                    videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                    this.currentVideoId = videoId;
+                    
+                    // Mark as watched after a delay (simulating video completion)
+                    if (!this.watchedVideos.has(videoId)) {
+                        setTimeout(() => {
+                            this.completeVideo(videoId);
+                        }, 5000); // 5 seconds for demo purposes
+                    }
+                } else {
+                    // For demo videos without real YouTube IDs
+                    videoFrame.src = `https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1`; // Fallback video
+                    this.currentVideoId = videoId;
+                    
+                    if (!this.watchedVideos.has(videoId)) {
+                        setTimeout(() => {
+                            this.completeVideo(videoId);
+                        }, 5000);
+                    }
+                }
             },
             
-            completeVideo: function() {
-                this.completedVideos++;
-                this.saveProgress();
-                this.updateProgressBar();
-                
-                // Show completion message
-                const videoInfo = document.querySelector('.video-info');
-                videoInfo.innerHTML += `
-                    <div class="success-message" style="display: block; margin-top: 15px;">
-                        <i class="fas fa-check-circle"></i> Video completed! Your progress has been saved.
-                    </div>
-                `;
+            isValidYouTubeId: function(id) {
+                // Check if the ID looks like a valid YouTube video ID
+                return id && id.length === 11 && !id.includes(' ');
+            },
+            
+            completeVideo: function(videoId) {
+                if (!this.watchedVideos.has(videoId)) {
+                    this.watchedVideos.add(videoId);
+                    this.completedVideos = this.watchedVideos.size;
+                    this.saveProgress();
+                    this.updateProgressBar();
+                    
+                    // Show completion message
+                    const videoInfo = document.querySelector('.video-info');
+                    const existingMessage = videoInfo.querySelector('.success-message');
+                    if (!existingMessage) {
+                        videoInfo.innerHTML += `
+                            <div class="success-message" style="display: block; margin-top: 15px;">
+                                <i class="fas fa-check-circle"></i> Video completed! Your progress has been saved.
+                            </div>
+                        `;
+                    }
+                }
             },
             
             updateProgressBar: function() {
@@ -1935,7 +1994,8 @@
             
             saveProgress: function() {
                 const progress = {
-                    completedVideos: this.completedVideos
+                    completedVideos: this.completedVideos,
+                    watchedVideos: Array.from(this.watchedVideos)
                 };
                 localStorage.setItem('videoTrainingProgress', JSON.stringify(progress));
             },
@@ -1945,6 +2005,7 @@
                 if (savedProgress) {
                     const progress = JSON.parse(savedProgress);
                     this.completedVideos = progress.completedVideos || 0;
+                    this.watchedVideos = new Set(progress.watchedVideos || []);
                 }
             }
         };
