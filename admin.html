@@ -517,19 +517,26 @@
                 </div>
 
                 <div class="users-table-container">
-                    <h3 style="margin-bottom: 20px;">Google Sign-In Users</h3>
+                    <h3 style="margin-bottom: 20px;">Registered Users</h3>
                     <table class="users-table">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Sign-in Method</th>
+                                <th>Created Date</th>
                                 <th>Last Sign-in</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody id="usersTableBody">
                             <!-- Users will be populated here -->
+                            <tr>
+                                <td colspan="7" style="text-align: center; padding: 20px;" id="loadingUsers">
+                                    <i class="fas fa-spinner fa-spin"></i> Loading users...
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -675,78 +682,125 @@
             }
         };
 
-        // User management
+        // User management with REAL Firebase data
         const UserManager = {
             fetchUsers: async () => {
                 try {
-                    // In a real implementation, you would fetch users from Firebase Auth
-                    // For demo purposes, we'll use mock data
-                    const mockUsers = [
-                        {
-                            uid: '1',
-                            displayName: 'John Doe',
-                            email: 'john.doe@example.com',
-                            providerData: [{ providerId: 'google.com' }],
-                            metadata: { lastSignInTime: new Date().toISOString() }
-                        },
-                        {
-                            uid: '2',
-                            displayName: 'Jane Smith',
-                            email: 'jane.smith@example.com',
-                            providerData: [{ providerId: 'google.com' }],
-                            metadata: { lastSignInTime: new Date(Date.now() - 86400000).toISOString() }
-                        },
-                        {
-                            uid: '3',
-                            displayName: 'Robert Johnson',
-                            email: 'robert.j@example.com',
-                            providerData: [{ providerId: 'google.com' }],
-                            metadata: { lastSignInTime: new Date(Date.now() - 172800000).toISOString() }
-                        }
-                    ];
+                    console.log("Fetching real users from Firebase...");
                     
-                    users = mockUsers;
+                    // Show loading state
+                    const tableBody = document.getElementById('usersTableBody');
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 20px;">
+                                <i class="fas fa-spinner fa-spin"></i> Loading real users from Firebase...
+                            </td>
+                        </tr>
+                    `;
+
+                    // Get all users from Firebase Auth
+                    const userRecords = await auth.listUsers();
+                    users = userRecords.users.map(user => ({
+                        uid: user.uid,
+                        email: user.email,
+                        displayName: user.displayName || 'Not provided',
+                        phoneNumber: user.phoneNumber,
+                        emailVerified: user.emailVerified,
+                        disabled: user.disabled,
+                        metadata: {
+                            creationTime: user.metadata.creationTime,
+                            lastSignInTime: user.metadata.lastSignInTime || user.metadata.creationTime
+                        },
+                        providerData: user.providerData.length > 0 ? user.providerData : [{ providerId: 'email' }]
+                    }));
+
+                    console.log("Fetched users:", users);
+                    
                     UserManager.updateStats();
                     UserManager.renderUsers();
                     
-                    return mockUsers;
+                    return users;
                 } catch (error) {
-                    console.error("Error fetching users:", error);
+                    console.error("Error fetching real users:", error);
+                    
+                    // Show error in table
+                    const tableBody = document.getElementById('usersTableBody');
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 20px; color: var(--danger);">
+                                <i class="fas fa-exclamation-triangle"></i> Error loading users: ${error.message}
+                            </td>
+                        </tr>
+                    `;
+                    
                     return [];
                 }
             },
             
             updateStats: () => {
-                document.getElementById('totalUsers').textContent = users.length;
-                document.getElementById('activeUsers').textContent = users.length; // In a real app, you'd calculate active users
-                document.getElementById('newUsers').textContent = users.filter(user => {
-                    const signInDate = new Date(user.metadata.lastSignInTime);
-                    const oneMonthAgo = new Date();
-                    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-                    return signInDate > oneMonthAgo;
+                const totalUsers = users.length;
+                const activeUsers = users.filter(user => !user.disabled).length;
+                
+                // Calculate new users this month
+                const currentMonth = new Date().getMonth();
+                const currentYear = new Date().getFullYear();
+                const newUsers = users.filter(user => {
+                    const createdDate = new Date(user.metadata.creationTime);
+                    return createdDate.getMonth() === currentMonth && 
+                           createdDate.getFullYear() === currentYear;
                 }).length;
+
+                document.getElementById('totalUsers').textContent = totalUsers;
+                document.getElementById('activeUsers').textContent = activeUsers;
+                document.getElementById('newUsers').textContent = newUsers;
             },
             
             renderUsers: () => {
                 const tableBody = document.getElementById('usersTableBody');
+                
+                if (users.length === 0) {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 20px;">
+                                No users found in Firebase Authentication.
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+                
                 tableBody.innerHTML = '';
                 
                 users.forEach(user => {
                     const row = document.createElement('tr');
                     
-                    // Format last sign-in date
-                    const lastSignIn = new Date(user.metadata.lastSignInTime);
-                    const formattedDate = lastSignIn.toLocaleDateString() + ' ' + lastSignIn.toLocaleTimeString();
+                    // Format dates
+                    const createdDate = new Date(user.metadata.creationTime);
+                    const lastSignInDate = new Date(user.metadata.lastSignInTime);
+                    
+                    const formattedCreatedDate = createdDate.toLocaleDateString();
+                    const formattedLastSignIn = lastSignInDate.toLocaleDateString() + ' ' + lastSignInDate.toLocaleTimeString();
                     
                     // Determine sign-in method
                     const provider = user.providerData && user.providerData[0] ? 
-                        user.providerData[0].providerId : 'Unknown';
+                        user.providerData[0].providerId : 'email';
+                    
+                    const providerName = provider === 'google.com' ? 'Google' : 
+                                        provider === 'password' ? 'Email/Password' : 
+                                        provider.charAt(0).toUpperCase() + provider.slice(1);
+                    
+                    // User status
+                    const status = user.disabled ? 
+                        '<span style="color: var(--danger);"><i class="fas fa-ban"></i> Disabled</span>' : 
+                        '<span style="color: var(--success);"><i class="fas fa-check-circle"></i> Active</span>';
                     
                     row.innerHTML = `
-                        <td>${user.displayName || 'N/A'}</td>
-                        <td>${user.email}</td>
-                        <td>${provider === 'google.com' ? 'Google' : provider}</td>
-                        <td>${formattedDate}</td>
+                        <td>${user.displayName}</td>
+                        <td>${user.email} ${user.emailVerified ? '<i class="fas fa-check-circle" style="color: var(--success);" title="Email Verified"></i>' : ''}</td>
+                        <td>${providerName}</td>
+                        <td>${formattedCreatedDate}</td>
+                        <td>${formattedLastSignIn}</td>
+                        <td>${status}</td>
                         <td>
                             <div class="action-buttons">
                                 <button class="btn btn-outline edit-user" data-id="${user.uid}">Edit</button>
@@ -791,36 +845,43 @@
             
             updateUser: async (userId, userData) => {
                 try {
-                    // In a real implementation, you would update the user in Firebase Auth
-                    console.log("Updating user:", userId, userData);
+                    // Update user in Firebase Auth
+                    await auth.updateUser(userId, {
+                        displayName: userData.displayName,
+                        email: userData.email
+                    });
                     
-                    // Update local data for demo
+                    // Update local data
                     const userIndex = users.findIndex(u => u.uid === userId);
                     if (userIndex !== -1) {
                         users[userIndex] = { ...users[userIndex], ...userData };
                         UserManager.renderUsers();
                     }
                     
+                    alert('User updated successfully!');
                     return true;
                 } catch (error) {
                     console.error("Error updating user:", error);
+                    alert('Error updating user: ' + error.message);
                     return false;
                 }
             },
             
             deleteUser: async (userId) => {
                 try {
-                    // In a real implementation, you would delete the user from Firebase Auth
-                    console.log("Deleting user:", userId);
+                    // Delete user from Firebase Auth
+                    await auth.deleteUser(userId);
                     
-                    // Remove from local data for demo
+                    // Remove from local data
                     users = users.filter(u => u.uid !== userId);
                     UserManager.updateStats();
                     UserManager.renderUsers();
                     
+                    alert('User deleted successfully!');
                     return true;
                 } catch (error) {
                     console.error("Error deleting user:", error);
+                    alert('Error deleting user: ' + error.message);
                     return false;
                 }
             }
@@ -841,7 +902,7 @@
                     activePage.classList.add('active');
                     activePage.setAttribute('aria-hidden', 'false');
                     
-                    // If showing dashboard, fetch users
+                    // If showing dashboard, fetch REAL users from Firebase
                     if (pageId === 'adminDashboard') {
                         UserManager.fetchUsers();
                     }
