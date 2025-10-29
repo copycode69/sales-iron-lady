@@ -900,239 +900,50 @@
             line-height: 1.5;
         }
 
-        @media (max-width: 768px) {
-            .status-info {
-                max-width: 200px;
-                font-size: 11px;
-            }
-            
-            .checklist-item {
-                flex-wrap: wrap;
-            }
-            
-            .checklist-item .due-date,
-            .checklist-item .status {
-                margin-top: 5px;
-            }
-        }
-        
-        /* Video Training Page Styles */
-        .video-training-page {
-            padding: 80px 0;
-        }
-        
-        .video-training-page h2 {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-            color: var(--dark);
-        }
-        
-        .video-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .video-category {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .video-category h3 {
-            font-size: 22px;
-            color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        .video-list {
-            list-style: none;
-        }
-        
-        .video-item {
-            padding: 15px 0;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-        }
-        
-        .video-item:last-child {
-            border-bottom: none;
-        }
-        
-        .video-item i {
-            color: var(--primary);
-            margin-right: 15px;
-            font-size: 18px;
-        }
-        
-        .video-item a {
-            color: var(--dark);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .video-item a:hover {
-            color: var(--primary);
-        }
-        
-        .video-duration {
-            margin-left: auto;
-            color: #666;
-            font-size: 14px;
-            background-color: #f5f5f5;
-            padding: 3px 8px;
-            border-radius: 12px;
-        }
-        
-        .video-player-section {
-            background-color: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 40px;
-        }
-        
-        .video-placeholder {
-            background-color: #f5f5f5;
-            height: 400px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .video-placeholder i {
-            font-size: 80px;
-            color: var(--primary);
-            opacity: 0.5;
-        }
-        
-        .video-placeholder-text {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .video-info h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-        
-        .video-info p {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .video-progress {
-            margin-top: 30px;
-        }
-        
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        
-        .progress-bar {
-            height: 8px;
-            background-color: #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background-color: var(--primary);
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-
-
-        .video-container {
-            position: relative;
-            background-color: #f5f5f5;
-            height: 400px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .youtube-player {
-            width: 100%;
-            height: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .video-container {
-                height: 250px;
-            }
-        }
-        
-        /* Accessibility improvements */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-        
-        /* Focus styles for accessibility */
-        a:focus, button:focus, input:focus, textarea:focus {
-            outline: 1px solid var(--primary);
-            outline-offset: 2px;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-image {
-                order: -1;
-            }
-            
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 10px 0;
+       @media (max-width: 768px) {
+    /* Status info styles */
+    .status-info {
+        max-width: 200px;
+        font-size: 11px;
+    }
+    
+    /* Checklist item styles */
+    .checklist-item {
+        flex-wrap: wrap;
+    }
+    
+    .checklist-item .due-date,
+    .checklist-item .status {
+        margin-top: 5px;
+    }
+    
+    /* Hero section */
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+    }
+    
+    /* About section */
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image {
+        order: -1;
+    }
+    
+    /* MOBILE MENU STYLES - FIXED */
+    nav {
+        position: relative; /* MOVED INSIDE MEDIA QUERY */
+    }
+    
+    /* MOBILE MENU STYLES - FIXED */
+            nav {
+                position: relative;
+                padding: 15px 0;
             }
             
             .mobile-menu-btn {
@@ -1142,8 +953,78 @@
                 font-size: 24px;
                 color: var(--dark);
                 cursor: pointer;
+                z-index: 1001;
+                padding: 8px 12px;
+                transition: color 0.3s;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: white;
+                border-radius: 4px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
             
+            .mobile-menu-btn:hover {
+                color: var(--primary);
+                background: #f5f5f5;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 20px 0;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                margin: 0;
+                list-style: none;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+            }
+            
+            .nav-links.active {
+                display: flex !important;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 15px 20px;
+                width: 100%;
+                font-size: 16px;
+                color: var(--dark);
+                text-decoration: none;
+                transition: all 0.3s;
+                background: white;
+            }
+            
+            .nav-links a:hover {
+                background-color: var(--light);
+                color: var(--primary);
+            }
+            
+            .nav-links a[aria-current="page"] {
+                background-color: var(--primary);
+                color: white;
+                font-weight: 600;
+            }
+            
+            /* Other mobile styles */
             .checklist-container {
                 padding: 20px;
             }
@@ -1155,7 +1036,56 @@
             .video-placeholder {
                 height: 250px;
             }
+            
+            .video-container {
+                height: 250px;
+            }
+            
+            /* Additional mobile fixes */
+            .features {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .login-container {
+                padding: 20px;
+                margin: 0 10px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
+    
+    /* Other mobile styles */
+    .checklist-container {
+        padding: 20px;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+    
+    .video-placeholder {
+        height: 250px;
+    }
+    
+    .video-container {
+        height: 250px;
+    }
+    
+ @media (min-width: 769px) {
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    .nav-links {
+        display: flex !important;
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -1176,9 +1106,9 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#login">Login</a></li>
                 </ul>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mobile menu" style="display: none;" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
-                </button>
+               <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Mobile menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
             </nav>
         </div>
     </header>
@@ -2076,694 +2006,793 @@
     <script>
         // Firebase configuration - should be replaced with environment variables in production
         const firebaseConfig = {
-        apiKey: "AIzaSyA1YN-JqjdrcYX3MDC5ZvifP9OKI9Uz4BE",
-        authDomain: "ironlady-47012.firebaseapp.com",
-        projectId: "ironlady-47012",
-        storageBucket: "ironlady-47012.firebasestorage.app",
-        messagingSenderId: "905821568629",
-        appId: "1:905821568629:web:b9f07814f3b2530c18423c",
-        measurementId: "G-XRV5RVNNKJ"
-        };
+    apiKey: "AIzaSyA1YN-JqjdrcYX3MDC5ZvifP9OKI9Uz4BE",
+    authDomain: "ironlady-47012.firebaseapp.com",
+    projectId: "ironlady-47012",
+    storageBucket: "ironlady-47012.firebasestorage.app",
+    messagingSenderId: "905821568629",
+    appId: "1:905821568629:web:b9f07814f3b2530c18423c",
+    measurementId: "G-XRV5RVNNKJ"
+};
 
-        // Initialize Firebase with error handling
-        (function() {
-            try {
-                firebase.initializeApp(firebaseConfig);
-                console.log("Firebase initialized successfully");
-                
-                // Enable persistence for better offline experience
-                firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-                    .catch(error => {
-                        console.error("Error enabling persistence:", error);
-                    });
-            } catch (err) {
-                console.error("Firebase initialization error", err);
-                showError("Firebase initialization failed. Please refresh the page.");
+// Initialize Firebase with error handling
+(function() {
+    try {
+        firebase.initializeApp(firebaseConfig);
+        console.log("Firebase initialized successfully");
+        
+        // Enable persistence for better offline experience
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            .catch(error => {
+                console.error("Error enabling persistence:", error);
+            });
+    } catch (err) {
+        console.error("Firebase initialization error", err);
+        showError("Firebase initialization failed. Please refresh the page.");
+    }
+})();
+
+const auth = firebase.auth();
+
+// Security and configuration
+function configureFirebaseSecurity() {
+    auth.useDeviceLanguage();
+    
+    // Disable app verification for testing on localhost
+    if (window.location.hostname === "localhost" || 
+        window.location.hostname === "127.0.0.1") {
+        auth.settings.appVerificationDisabledForTesting = true;
+    }
+}
+
+// Form validation utilities
+const FormUtils = {
+    validateEmail: (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    },
+    
+    validatePassword: (password) => {
+        return password.length >= 6;
+    },
+    
+    showError: (element, message) => {
+        element.textContent = message;
+        element.style.display = 'block';
+        setTimeout(() => {
+            element.style.display = 'none';
+        }, 5000);
+    },
+    
+    showSuccess: (element, message) => {
+        element.textContent = message;
+        element.style.display = 'block';
+    },
+    
+    setLoading: (element, isLoading) => {
+        if (isLoading) {
+            element.classList.add('loading');
+            element.disabled = true;
+        } else {
+            element.classList.remove('loading');
+            element.disabled = false;
+        }
+    }
+};
+
+// Onboarding checklist functionality
+const OnboardingManager = {
+    totalItems: 38, // Updated to 38 items
+    completedItems: 0,
+    
+    init: function() {
+        // Load saved progress from localStorage
+        this.loadProgress();
+        
+        // Set up event listeners for checkboxes
+        document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                this.updateItemStatus(e.target);
+                this.saveProgress();
+                this.updateProgressBar();
+            });
+        });
+        
+        // Initialize progress bar
+        this.updateProgressBar();
+    },
+    
+    updateItemStatus: function(checkbox) {
+        const item = checkbox.closest('.checklist-item');
+        const statusElement = item.querySelector('.status');
+        
+        // Skip updating status for guideline items (they don't have status-pending/status-completed classes)
+        if (statusElement && !statusElement.classList.contains('status-info')) {
+            if (checkbox.checked) {
+                statusElement.textContent = 'Completed';
+                statusElement.className = 'status status-completed';
+                this.completedItems++;
+            } else {
+                statusElement.textContent = 'Pending';
+                statusElement.className = 'status status-pending';
+                this.completedItems--;
             }
-        })();
-
-        const auth = firebase.auth();
-
-        // Security and configuration
-        function configureFirebaseSecurity() {
-            auth.useDeviceLanguage();
-            
-            // Disable app verification for testing on localhost
-            if (window.location.hostname === "localhost" || 
-                window.location.hostname === "127.0.0.1") {
-                auth.settings.appVerificationDisabledForTesting = true;
+        } else if (!statusElement.classList.contains('status-info')) {
+            // Regular checklist items
+            if (checkbox.checked) {
+                this.completedItems++;
+            } else {
+                this.completedItems--;
             }
         }
+    },
+    
+    updateProgressBar: function() {
+        const progressPercentage = Math.round((this.completedItems / this.totalItems) * 100);
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-percentage');
+        
+        progressFill.style.width = `${progressPercentage}%`;
+        progressText.textContent = `${progressPercentage}%`;
+    },
+    
+    saveProgress: function() {
+        const progress = {};
+        document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
+            progress[checkbox.id] = checkbox.checked;
+        });
+        
+        localStorage.setItem('onboardingProgress', JSON.stringify(progress));
+    },
+    
+    loadProgress: function() {
+        const savedProgress = localStorage.getItem('onboardingProgress');
+        if (savedProgress) {
+            const progress = JSON.parse(savedProgress);
+            
+            for (const [id, checked] of Object.entries(progress)) {
+                const checkbox = document.getElementById(id);
+                if (checkbox) {
+                    checkbox.checked = checked;
+                    if (checked) {
+                        this.completedItems++;
+                        const item = checkbox.closest('.checklist-item');
+                        const statusElement = item.querySelector('.status');
+                        if (statusElement && !statusElement.classList.contains('status-info')) {
+                            statusElement.textContent = 'Completed';
+                            statusElement.className = 'status status-completed';
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
 
-        // Form validation utilities
-        const FormUtils = {
-            validateEmail: (email) => {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            },
+// Video Training functionality
+const VideoTrainingManager = {
+    totalVideos: 12,
+    completedVideos: 0,
+    currentVideoId: null,
+    watchedVideos: new Set(),
+    
+    init: function() {
+        // Load saved progress from localStorage
+        this.loadProgress();
+        
+        // Set up event listeners for video links
+        document.querySelectorAll('.video-item a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const videoId = e.target.getAttribute('data-video-id');
+                const title = e.target.getAttribute('data-title');
+                const description = e.target.getAttribute('data-description');
+                this.playVideo(videoId, title, description);
+            });
+        });
+        
+        // Initialize progress bar
+        this.updateProgressBar();
+    },
+    
+    playVideo: function(videoId, title, description) {
+        const videoPlaceholder = document.getElementById('videoPlaceholder');
+        const youtubePlayer = document.getElementById('youtubePlayer');
+        const videoFrame = document.getElementById('videoFrame');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoDescription = document.getElementById('videoDescription');
+        
+        // Hide placeholder and show YouTube player
+        videoPlaceholder.style.display = 'none';
+        youtubePlayer.style.display = 'block';
+        
+        // Update video info
+        videoTitle.textContent = title;
+        videoDescription.textContent = description;
+        
+        // Set the YouTube video URL
+        if (this.isValidYouTubeId(videoId)) {
+            videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            this.currentVideoId = videoId;
             
-            validatePassword: (password) => {
-                return password.length >= 6;
-            },
-            
-            showError: (element, message) => {
-                element.textContent = message;
-                element.style.display = 'block';
+            // Mark as watched after a delay (simulating video completion)
+            if (!this.watchedVideos.has(videoId)) {
                 setTimeout(() => {
-                    element.style.display = 'none';
+                    this.completeVideo(videoId);
+                }, 5000); // 5 seconds for demo purposes
+            }
+        } else {
+            // For demo videos without real YouTube IDs
+            videoFrame.src = `https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1`; // Fallback video
+            this.currentVideoId = videoId;
+            
+            if (!this.watchedVideos.has(videoId)) {
+                setTimeout(() => {
+                    this.completeVideo(videoId);
                 }, 5000);
-            },
-            
-            showSuccess: (element, message) => {
-                element.textContent = message;
-                element.style.display = 'block';
-            },
-            
-            setLoading: (element, isLoading) => {
-                if (isLoading) {
-                    element.classList.add('loading');
-                    element.disabled = true;
-                } else {
-                    element.classList.remove('loading');
-                    element.disabled = false;
-                }
             }
+        }
+    },
+    
+    isValidYouTubeId: function(id) {
+        // Check if the ID looks like a valid YouTube video ID
+        return id && id.length === 11 && !id.includes(' ');
+    },
+    
+    completeVideo: function(videoId) {
+        if (!this.watchedVideos.has(videoId)) {
+            this.watchedVideos.add(videoId);
+            this.completedVideos = this.watchedVideos.size;
+            this.saveProgress();
+            this.updateProgressBar();
+            
+            // Show completion message
+            const videoInfo = document.querySelector('.video-info');
+            const existingMessage = videoInfo.querySelector('.success-message');
+            if (!existingMessage) {
+                videoInfo.innerHTML += `
+                    <div class="success-message" style="display: block; margin-top: 15px;">
+                        <i class="fas fa-check-circle"></i> Video completed! Your progress has been saved.
+                    </div>
+                `;
+            }
+        }
+    },
+    
+    updateProgressBar: function() {
+        const progressPercentage = Math.round((this.completedVideos / this.totalVideos) * 100);
+        const progressFill = document.getElementById('video-progress-fill');
+        const progressText = document.getElementById('video-progress-percentage');
+        
+        progressFill.style.width = `${progressPercentage}%`;
+        progressText.textContent = `${progressPercentage}%`;
+    },
+    
+    saveProgress: function() {
+        const progress = {
+            completedVideos: this.completedVideos,
+            watchedVideos: Array.from(this.watchedVideos)
         };
+        localStorage.setItem('videoTrainingProgress', JSON.stringify(progress));
+    },
+    
+    loadProgress: function() {
+        const savedProgress = localStorage.getItem('videoTrainingProgress');
+        if (savedProgress) {
+            const progress = JSON.parse(savedProgress);
+            this.completedVideos = progress.completedVideos || 0;
+            this.watchedVideos = new Set(progress.watchedVideos || []);
+        }
+    }
+};
 
-        // Onboarding checklist functionality
-        const OnboardingManager = {
-            totalItems: 38, // Updated to 38 items
-            completedItems: 0,
+// Page navigation
+const Navigation = {
+    showPage: (pageId, event = null) => {
+        if (event) {
+            event.preventDefault();
+        }
+        
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+            page.setAttribute('aria-hidden', 'true');
+        });
+        
+        // Show selected page
+        const activePage = document.getElementById(pageId);
+        if (activePage) {
+            activePage.classList.add('active');
+            activePage.setAttribute('aria-hidden', 'false');
             
-            init: function() {
-                // Load saved progress from localStorage
-                this.loadProgress();
-                
-                // Set up event listeners for checkboxes
-                document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
-                    checkbox.addEventListener('change', (e) => {
-                        this.updateItemStatus(e.target);
-                        this.saveProgress();
-                        this.updateProgressBar();
-                    });
-                });
-                
-                // Initialize progress bar
-                this.updateProgressBar();
-            },
+            // Update URL
+            history.pushState({page: pageId}, '', `#${pageId}`);
             
-            updateItemStatus: function(checkbox) {
-                const item = checkbox.closest('.checklist-item');
-                const statusElement = item.querySelector('.status');
-                
-                // Skip updating status for guideline items (they don't have status-pending/status-completed classes)
-                if (statusElement && !statusElement.classList.contains('status-info')) {
-                    if (checkbox.checked) {
-                        statusElement.textContent = 'Completed';
-                        statusElement.className = 'status status-completed';
-                        this.completedItems++;
-                    } else {
-                        statusElement.textContent = 'Pending';
-                        statusElement.className = 'status status-pending';
-                        this.completedItems--;
-                    }
-                } else if (!statusElement.classList.contains('status-info')) {
-                    // Regular checklist items
-                    if (checkbox.checked) {
-                        this.completedItems++;
-                    } else {
-                        this.completedItems--;
-                    }
-                }
-            },
+            // Scroll to top
+            window.scrollTo(0, 0);
             
-            updateProgressBar: function() {
-                const progressPercentage = Math.round((this.completedItems / this.totalItems) * 100);
-                const progressFill = document.getElementById('progress-fill');
-                const progressText = document.getElementById('progress-percentage');
-                
-                progressFill.style.width = `${progressPercentage}%`;
-                progressText.textContent = `${progressPercentage}%`;
-            },
+            // Update aria-current for nav links
+            document.querySelectorAll('.nav-links a, .footer-column a').forEach(link => {
+                const linkPage = link.getAttribute('href').substring(1);
+                link.setAttribute('aria-current', linkPage === pageId ? 'page' : 'false');
+            });
             
-            saveProgress: function() {
-                const progress = {};
-                document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
-                    progress[checkbox.id] = checkbox.checked;
-                });
-                
-                localStorage.setItem('onboardingProgress', JSON.stringify(progress));
-            },
-            
-            loadProgress: function() {
-                const savedProgress = localStorage.getItem('onboardingProgress');
-                if (savedProgress) {
-                    const progress = JSON.parse(savedProgress);
-                    
-                    for (const [id, checked] of Object.entries(progress)) {
-                        const checkbox = document.getElementById(id);
-                        if (checkbox) {
-                            checkbox.checked = checked;
-                            if (checked) {
-                                this.completedItems++;
-                                const item = checkbox.closest('.checklist-item');
-                                const statusElement = item.querySelector('.status');
-                                if (statusElement && !statusElement.classList.contains('status-info')) {
-                                    statusElement.textContent = 'Completed';
-                                    statusElement.className = 'status status-completed';
-                                }
-                            }
-                        }
-                    }
-                }
+            // Close mobile menu if open
+            const navLinks = document.getElementById('navLinks');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                document.getElementById('mobileMenuBtn').setAttribute('aria-expanded', 'false');
             }
-        };
-
-        // Video Training functionality
-        const VideoTrainingManager = {
-            totalVideos: 12,
-            completedVideos: 0,
-            currentVideoId: null,
-            watchedVideos: new Set(),
             
-            init: function() {
-                // Load saved progress from localStorage
-                this.loadProgress();
-                
-                // Set up event listeners for video links
-                document.querySelectorAll('.video-item a').forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const videoId = e.target.getAttribute('data-video-id');
-                        const title = e.target.getAttribute('data-title');
-                        const description = e.target.getAttribute('data-description');
-                        this.playVideo(videoId, title, description);
-                    });
-                });
-                
-                // Initialize progress bar
-                this.updateProgressBar();
-            },
-            
-            playVideo: function(videoId, title, description) {
-                const videoPlaceholder = document.getElementById('videoPlaceholder');
-                const youtubePlayer = document.getElementById('youtubePlayer');
-                const videoFrame = document.getElementById('videoFrame');
-                const videoTitle = document.getElementById('videoTitle');
-                const videoDescription = document.getElementById('videoDescription');
-                
-                // Hide placeholder and show YouTube player
-                videoPlaceholder.style.display = 'none';
-                youtubePlayer.style.display = 'block';
-                
-                // Update video info
-                videoTitle.textContent = title;
-                videoDescription.textContent = description;
-                
-                // Set the YouTube video URL
-                if (this.isValidYouTubeId(videoId)) {
-                    videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-                    this.currentVideoId = videoId;
-                    
-                    // Mark as watched after a delay (simulating video completion)
-                    if (!this.watchedVideos.has(videoId)) {
-                        setTimeout(() => {
-                            this.completeVideo(videoId);
-                        }, 5000); // 5 seconds for demo purposes
-                    }
-                } else {
-                    // For demo videos without real YouTube IDs
-                    videoFrame.src = `https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1`; // Fallback video
-                    this.currentVideoId = videoId;
-                    
-                    if (!this.watchedVideos.has(videoId)) {
-                        setTimeout(() => {
-                            this.completeVideo(videoId);
-                        }, 5000);
-                    }
-                }
-            },
-            
-            isValidYouTubeId: function(id) {
-                // Check if the ID looks like a valid YouTube video ID
-                return id && id.length === 11 && !id.includes(' ');
-            },
-            
-            completeVideo: function(videoId) {
-                if (!this.watchedVideos.has(videoId)) {
-                    this.watchedVideos.add(videoId);
-                    this.completedVideos = this.watchedVideos.size;
-                    this.saveProgress();
-                    this.updateProgressBar();
-                    
-                    // Show completion message
-                    const videoInfo = document.querySelector('.video-info');
-                    const existingMessage = videoInfo.querySelector('.success-message');
-                    if (!existingMessage) {
-                        videoInfo.innerHTML += `
-                            <div class="success-message" style="display: block; margin-top: 15px;">
-                                <i class="fas fa-check-circle"></i> Video completed! Your progress has been saved.
-                            </div>
-                        `;
-                    }
-                }
-            },
-            
-            updateProgressBar: function() {
-                const progressPercentage = Math.round((this.completedVideos / this.totalVideos) * 100);
-                const progressFill = document.getElementById('video-progress-fill');
-                const progressText = document.getElementById('video-progress-percentage');
-                
-                progressFill.style.width = `${progressPercentage}%`;
-                progressText.textContent = `${progressPercentage}%`;
-            },
-            
-            saveProgress: function() {
-                const progress = {
-                    completedVideos: this.completedVideos,
-                    watchedVideos: Array.from(this.watchedVideos)
-                };
-                localStorage.setItem('videoTrainingProgress', JSON.stringify(progress));
-            },
-            
-            loadProgress: function() {
-                const savedProgress = localStorage.getItem('videoTrainingProgress');
-                if (savedProgress) {
-                    const progress = JSON.parse(savedProgress);
-                    this.completedVideos = progress.completedVideos || 0;
-                    this.watchedVideos = new Set(progress.watchedVideos || []);
-                }
+            // Initialize onboarding if on that page
+            if (pageId === 'onboarding') {
+                OnboardingManager.init();
             }
-        };
-
-        // Page navigation
-        const Navigation = {
-            showPage: (pageId, event = null) => {
-                if (event) {
-                    event.preventDefault();
-                }
-                
-                // Hide all pages
-                document.querySelectorAll('.page').forEach(page => {
-                    page.classList.remove('active');
-                    page.setAttribute('aria-hidden', 'true');
-                });
-                
-                // Show selected page
-                const activePage = document.getElementById(pageId);
-                if (activePage) {
-                    activePage.classList.add('active');
-                    activePage.setAttribute('aria-hidden', 'false');
-                    
-                    // Update URL
-                    history.pushState({page: pageId}, '', `#${pageId}`);
-                    
-                    // Scroll to top
-                    window.scrollTo(0, 0);
-                    
-                    // Update aria-current for nav links
-                    document.querySelectorAll('.nav-links a, .footer-column a').forEach(link => {
-                        const linkPage = link.getAttribute('href').substring(1);
-                        link.setAttribute('aria-current', linkPage === pageId ? 'page' : 'false');
-                    });
-                    
-                    // Close mobile menu if open
-                    const navLinks = document.getElementById('navLinks');
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        document.getElementById('mobileMenuBtn').setAttribute('aria-expanded', 'false');
-                    }
-                    
-                    // Initialize onboarding if on that page
-                    if (pageId === 'onboarding') {
-                        OnboardingManager.init();
-                    }
-                    
-                    // Initialize video training if on that page
-                    if (pageId === 'video-training') {
-                        VideoTrainingManager.init();
-                    }
-                }
-            },
             
-            handleHashChange: () => {
-                const hash = window.location.hash.substring(1);
-                const validPages = ['home', 'onboarding', 'training', 'video-training', 'about', 'login', 'register', 'reset'];
-                
-                if (validPages.includes(hash)) {
-                    Navigation.showPage(hash);
-                } else {
-                    Navigation.showPage('home');
-                }
-            },
-            
-            initPageFromHash: () => {
-                Navigation.handleHashChange();
+            // Initialize video training if on that page
+            if (pageId === 'video-training') {
+                VideoTrainingManager.init();
             }
-        };
+        }
+    },
+    
+    handleHashChange: () => {
+        const hash = window.location.hash.substring(1);
+        const validPages = ['home', 'onboarding', 'training', 'video-training', 'about', 'login', 'register', 'reset'];
+        
+        if (validPages.includes(hash)) {
+            Navigation.showPage(hash);
+        } else {
+            Navigation.showPage('home');
+        }
+    },
+    
+    initPageFromHash: () => {
+        Navigation.handleHashChange();
+    }
+};
 
-        // Auth handlers
-        const AuthHandlers = {
-            initAuthStateListener: () => {
-                auth.onAuthStateChanged((user) => {
-                    if (user) {
-                        // Redirect to training after login
-                        if (window.location.hash === '#login' || sessionStorage.getItem('newLogin') === 'true') {
-                            // Clear the flag
-                            sessionStorage.removeItem('newLogin');
-                            // Redirect to training page
-                            Navigation.showPage('training');
-                        }
-                    }
-                });
-            },
-            
-            handleLogin: async (email, password, errorElement, submitButton) => {
-                // Validate inputs
-                if (!FormUtils.validateEmail(email)) {
-                    FormUtils.showError(errorElement, "Please enter a valid email address");
-                    return false;
+// Auth handlers
+const AuthHandlers = {
+    initAuthStateListener: () => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // Redirect to training after login
+                if (window.location.hash === '#login' || sessionStorage.getItem('newLogin') === 'true') {
+                    // Clear the flag
+                    sessionStorage.removeItem('newLogin');
+                    // Redirect to training page
+                    Navigation.showPage('training');
                 }
-
-                if (!FormUtils.validatePassword(password)) {
-                    FormUtils.showError(errorElement, "Password must be at least 6 characters");
-                    return false;
-                }
-
-                FormUtils.setLoading(submitButton, true);
-
-                try {
-                    configureFirebaseSecurity();
-                    // Set flag for new login
-                    sessionStorage.setItem('newLogin', 'true');
-                    await auth.signInWithEmailAndPassword(email, password);
-                    return true;
-                } catch (error) {
-                    let errorMessage = "Login failed. Please try again.";
-                    switch (error.code) {
-                        case 'auth/user-not-found':
-                            errorMessage = "No account found with this email.";
-                            break;
-                        case 'auth/wrong-password':
-                            errorMessage = "Incorrect password. Please try again.";
-                            break;
-                        case 'auth/too-many-requests':
-                            errorMessage = "Too many attempts. Please try again later.";
-                            break;
-                        case 'auth/user-disabled':
-                            errorMessage = "This account has been disabled.";
-                            break;
-                    }
-                    FormUtils.showError(errorElement, errorMessage);
-                    return false;
-                } finally {
-                    FormUtils.setLoading(submitButton, false);
-                }
-            },
-            
-            handleRegister: async (name, email, department, manager, salesType, reason, errorElement, submitButton) => {
-                // Validate inputs
-                if (!name) {
-                    FormUtils.showError(errorElement, "Please enter your name");
-                    return false;
-                }
-
-                if (!FormUtils.validateEmail(email)) {
-                    FormUtils.showError(errorElement, "Please enter a valid email address");
-                    return false;
-                }
-
-                if (!department) {
-                    FormUtils.showError(errorElement, "Please enter your department");
-                    return false;
-                }
-
-                if (!manager) {
-                    FormUtils.showError(errorElement, "Please enter your manager's name");
-                    return false;
-                }
-
-                if (!salesType) {
-                    FormUtils.showError(errorElement, "Please select your sales type");
-                    return false;
-                }
-
-                if (!reason) {
-                    FormUtils.showError(errorElement, "Please explain why you need access");
-                    return false;
-                }
-
-                FormUtils.setLoading(submitButton, true);
-
-                try {
-                    // In a real application, this would send a request to create an account
-                    // For demo purposes, we'll simulate a successful request
-                    await new Promise(resolve => setTimeout(resolve, 1500));
-                    
-                    // Show success message
-                    const registerForm = document.getElementById('registerForm');
-                    registerForm.innerHTML = `
-                        <div style="text-align: center; padding: 20px;">
-                            <i class="fas fa-check-circle" style="font-size: 50px; color: var(--success); margin-bottom: 20px;"></i>
-                            <h3>Access Request Submitted!</h3>
-                            <p>Your account request has been sent to the administrator. You will receive an email with login credentials once your account is approved.</p>
-                            <button onclick="Navigation.showPage('home')" class="btn" style="margin-top: 20px;">Return to Home</button>
-                        </div>
-                    `;
-                    
-                    return true;
-                } catch (error) {
-                    let errorMessage = "Registration failed. Please try again.";
-                    FormUtils.showError(errorElement, errorMessage);
-                    return false;
-                } finally {
-                    FormUtils.setLoading(submitButton, false);
-                }
-            },
-            
-            handlePasswordReset: async (email, errorElement, successElement, submitButton) => {
-                if (!FormUtils.validateEmail(email)) {
-                    FormUtils.showError(errorElement, "Please enter a valid email address");
-                    return false;
-                }
-
-                FormUtils.setLoading(submitButton, true);
-
-                try {
-                    configureFirebaseSecurity();
-                    await auth.sendPasswordResetEmail(email);
-                    FormUtils.showSuccess(successElement, "Password reset email sent. Please check your inbox.");
-                    errorElement.style.display = 'none';
-                    return true;
-                } catch (error) {
-                    let errorMessage = "Failed to send reset email. Please try again.";
-                    if (error.code === 'auth/user-not-found') {
-                        errorMessage = "No account found with this email.";
-                    }
-                    FormUtils.showError(errorElement, errorMessage);
-                    successElement.style.display = 'none';
-                    return false;
-                } finally {
-                    FormUtils.setLoading(submitButton, false);
-                }
-            },
-            
-            handleGoogleSignIn: async (isSignUp = false) => {
-                try {
-                    configureFirebaseSecurity();
-                    const provider = new firebase.auth.GoogleAuthProvider();
-                    provider.addScope('email');
-                    provider.addScope('profile');
-                    
-                    // Set flag for new login
-                    sessionStorage.setItem('newLogin', 'true');
-                    const result = await auth.signInWithPopup(provider);
-                    const user = result.user;
-                    
-                    // If this is a sign-up, we might want to save additional user info
-                    if (isSignUp) {
-                        // In a real app, you would send this to your backend
-                        console.log("Google sign-up completed:", user);
-                    }
-                    
-                    return true;
-                } catch (error) {
-                    console.error("Google sign-in error:", error);
-                    let errorMessage = "Google sign-in failed. Please try again.";
-                    
-                    if (error.code === 'auth/popup-closed-by-user') {
-                        errorMessage = "Sign-in was cancelled.";
-                    } else if (error.code === 'auth/account-exists-with-different-credential') {
-                        errorMessage = "An account already exists with the same email address but different sign-in credentials.";
-                    }
-                    
-                    // Show error in appropriate place
-                    const errorElement = isSignUp ? 
-                        document.getElementById('registerError') : 
-                        document.getElementById('loginError');
-                    
-                    if (errorElement) {
-                        FormUtils.showError(errorElement, errorMessage);
-                    }
-                    
-                    return false;
-                }
-            }
-        };
-
-        // UI handlers
-        const UIHandlers = {
-            setupMobileMenu: () => {
-                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-                const navLinks = document.getElementById('navLinks');
-                
-                if (mobileMenuBtn && navLinks) {
-                    mobileMenuBtn.addEventListener('click', () => {
-                        const isExpanded = navLinks.classList.contains('active');
-                        navLinks.classList.toggle('active', !isExpanded);
-                        mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
-                    });
-                }
-            },
-            
-            setupLinkHandlers: () => {
-                document.addEventListener('click', function(e) {
-                    // Handle navbar and footer links
-                    if (e.target.matches('.nav-links a, .footer-column a')) {
-                        const href = e.target.getAttribute('href');
-                        if (href.startsWith('#')) {
-                            const pageId = href.substring(1);
-                            
-                            // Check if user is trying to access onboarding or training without being logged in
-                            if ((pageId === 'onboarding' || pageId === 'training' || pageId === 'video-training') && !auth.currentUser) {
-                                e.preventDefault();
-                                document.getElementById('loginRequiredModal').classList.add('active');
-                                return;
-                            }
-                            
-                            Navigation.showPage(pageId, e);
-                        }
-                    }
-                    
-                    // Handle "Begin Onboarding" button
-                    if (e.target.id === 'beginOnboardingBtn') {
-                        e.preventDefault();
-                        if (!auth.currentUser) {
-                            document.getElementById('loginRequiredModal').classList.add('active');
-                        } else {
-                            Navigation.showPage('onboarding', e);
-                        }
-                    }
-                });
-            },
-            
-            setupWindowResize: () => {
-                window.addEventListener('resize', () => {
-                    const navLinks = document.getElementById('navLinks');
-                    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-                    
-                    if (window.innerWidth > 768) {
-                        navLinks.style.display = 'flex';
-                        mobileMenuBtn.style.display = 'none';
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                    } else {
-                        navLinks.style.display = 'none';
-                        mobileMenuBtn.style.display = 'block';
-                    }
-                });
-            },
-            
-            setupFormHandlers: () => {
-                // Login form
-                document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const email = document.getElementById('loginEmail').value;
-                    const password = document.getElementById('loginPassword').value;
-                    const errorElement = document.getElementById('loginError');
-                    const submitButton = e.target.querySelector('button[type="submit"]');
-                    
-                    await AuthHandlers.handleLogin(email, password, errorElement, submitButton);
-                });
-                
-                // Register form
-                document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const name = document.getElementById('registerName').value.trim();
-                    const email = document.getElementById('registerEmail').value;
-                    const department = document.getElementById('registerDepartment').value.trim();
-                    const manager = document.getElementById('registerManager').value.trim();
-                    const salesType = document.getElementById('registerSalesType').value;
-                    const reason = document.getElementById('registerReason').value.trim();
-                    const errorElement = document.getElementById('registerError');
-                    const submitButton = e.target.querySelector('button[type="submit"]');
-                    
-                    await AuthHandlers.handleRegister(name, email, department, manager, salesType, reason, errorElement, submitButton);
-                });
-                
-                // Password reset form
-                document.getElementById('resetForm')?.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const email = document.getElementById('resetEmail').value;
-                    const errorElement = document.getElementById('resetError');
-                    const successElement = document.getElementById('resetSuccess');
-                    const submitButton = e.target.querySelector('button[type="submit"]');
-                    
-                    await AuthHandlers.handlePasswordReset(email, errorElement, successElement, submitButton);
-                });
-                
-                // Google sign-in buttons
-                document.getElementById('googleSignIn')?.addEventListener('click', () => {
-                    AuthHandlers.handleGoogleSignIn(false);
-                });
-                
-                document.getElementById('googleSignUp')?.addEventListener('click', () => {
-                    AuthHandlers.handleGoogleSignIn(true);
-                });
-                
-                // Close modal when clicking outside
-                document.getElementById('loginRequiredModal')?.addEventListener('click', (e) => {
-                    if (e.target.id === 'loginRequiredModal') {
-                        e.target.classList.remove('active');
-                    }
-                });
-                
-                // Close modal with buttons
-                document.querySelectorAll('.modal-buttons a').forEach(button => {
-                    button.addEventListener('click', () => {
-                        document.getElementById('loginRequiredModal').classList.remove('active');
-                    });
-                });
-            }
-        };
-
-        // Initialize the application
-        document.addEventListener('DOMContentLoaded', () => {
-            Navigation.initPageFromHash();
-            configureFirebaseSecurity();
-            AuthHandlers.initAuthStateListener();
-            
-            UIHandlers.setupMobileMenu();
-            UIHandlers.setupLinkHandlers();
-            UIHandlers.setupWindowResize();
-            UIHandlers.setupFormHandlers();
-            
-            // Check for mobile view
-            if (window.innerWidth <= 768) {
-                document.getElementById('navLinks').style.display = 'none';
-                document.getElementById('mobileMenuBtn').style.display = 'block';
-            }
-
-            // Check for redirect message
-            const urlParams = new URLSearchParams(window.location.search);
-            const message = urlParams.get('message');
-            if (message && document.getElementById('loginError')) {
-                FormUtils.showError(document.getElementById('loginError'), decodeURIComponent(message));
             }
         });
+    },
+    
+    handleLogin: async (email, password, errorElement, submitButton) => {
+        // Validate inputs
+        if (!FormUtils.validateEmail(email)) {
+            FormUtils.showError(errorElement, "Please enter a valid email address");
+            return false;
+        }
 
-        // Handle back/forward button
-        window.addEventListener('popstate', Navigation.handleHashChange);
-    </script>
+        if (!FormUtils.validatePassword(password)) {
+            FormUtils.showError(errorElement, "Password must be at least 6 characters");
+            return false;
+        }
+
+        FormUtils.setLoading(submitButton, true);
+
+        try {
+            configureFirebaseSecurity();
+            // Set flag for new login
+            sessionStorage.setItem('newLogin', 'true');
+            await auth.signInWithEmailAndPassword(email, password);
+            return true;
+        } catch (error) {
+            let errorMessage = "Login failed. Please try again.";
+            switch (error.code) {
+                case 'auth/user-not-found':
+                    errorMessage = "No account found with this email.";
+                    break;
+                case 'auth/wrong-password':
+                    errorMessage = "Incorrect password. Please try again.";
+                    break;
+                case 'auth/too-many-requests':
+                    errorMessage = "Too many attempts. Please try again later.";
+                    break;
+                case 'auth/user-disabled':
+                    errorMessage = "This account has been disabled.";
+                    break;
+            }
+            FormUtils.showError(errorElement, errorMessage);
+            return false;
+        } finally {
+            FormUtils.setLoading(submitButton, false);
+        }
+    },
+    
+    handleRegister: async (name, email, department, manager, salesType, reason, errorElement, submitButton) => {
+        // Validate inputs
+        if (!name) {
+            FormUtils.showError(errorElement, "Please enter your name");
+            return false;
+        }
+
+        if (!FormUtils.validateEmail(email)) {
+            FormUtils.showError(errorElement, "Please enter a valid email address");
+            return false;
+        }
+
+        if (!department) {
+            FormUtils.showError(errorElement, "Please enter your department");
+            return false;
+        }
+
+        if (!manager) {
+            FormUtils.showError(errorElement, "Please enter your manager's name");
+            return false;
+        }
+
+        if (!salesType) {
+            FormUtils.showError(errorElement, "Please select your sales type");
+            return false;
+        }
+
+        if (!reason) {
+            FormUtils.showError(errorElement, "Please explain why you need access");
+            return false;
+        }
+
+        FormUtils.setLoading(submitButton, true);
+
+        try {
+            // In a real application, this would send a request to create an account
+            // For demo purposes, we'll simulate a successful request
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Show success message
+            const registerForm = document.getElementById('registerForm');
+            registerForm.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <i class="fas fa-check-circle" style="font-size: 50px; color: var(--success); margin-bottom: 20px;"></i>
+                    <h3>Access Request Submitted!</h3>
+                    <p>Your account request has been sent to the administrator. You will receive an email with login credentials once your account is approved.</p>
+                    <button onclick="Navigation.showPage('home')" class="btn" style="margin-top: 20px;">Return to Home</button>
+                </div>
+            `;
+            
+            return true;
+        } catch (error) {
+            let errorMessage = "Registration failed. Please try again.";
+            FormUtils.showError(errorElement, errorMessage);
+            return false;
+        } finally {
+            FormUtils.setLoading(submitButton, false);
+        }
+    },
+    
+    handlePasswordReset: async (email, errorElement, successElement, submitButton) => {
+        if (!FormUtils.validateEmail(email)) {
+            FormUtils.showError(errorElement, "Please enter a valid email address");
+            return false;
+        }
+
+        FormUtils.setLoading(submitButton, true);
+
+        try {
+            configureFirebaseSecurity();
+            await auth.sendPasswordResetEmail(email);
+            FormUtils.showSuccess(successElement, "Password reset email sent. Please check your inbox.");
+            errorElement.style.display = 'none';
+            return true;
+        } catch (error) {
+            let errorMessage = "Failed to send reset email. Please try again.";
+            if (error.code === 'auth/user-not-found') {
+                errorMessage = "No account found with this email.";
+            }
+            FormUtils.showError(errorElement, errorMessage);
+            successElement.style.display = 'none';
+            return false;
+        } finally {
+            FormUtils.setLoading(submitButton, false);
+        }
+    },
+    
+    handleGoogleSignIn: async (isSignUp = false) => {
+        try {
+            configureFirebaseSecurity();
+            const provider = new firebase.auth.GoogleAuthProvider();
+            provider.addScope('email');
+            provider.addScope('profile');
+            
+            // Set flag for new login
+            sessionStorage.setItem('newLogin', 'true');
+            const result = await auth.signInWithPopup(provider);
+            const user = result.user;
+            
+            // If this is a sign-up, we might want to save additional user info
+            if (isSignUp) {
+                // In a real app, you would send this to your backend
+                console.log("Google sign-up completed:", user);
+            }
+            
+            return true;
+        } catch (error) {
+            console.error("Google sign-in error:", error);
+            let errorMessage = "Google sign-in failed. Please try again.";
+            
+            if (error.code === 'auth/popup-closed-by-user') {
+                errorMessage = "Sign-in was cancelled.";
+            } else if (error.code === 'auth/account-exists-with-different-credential') {
+                errorMessage = "An account already exists with the same email address but different sign-in credentials.";
+            }
+            
+            // Show error in appropriate place
+            const errorElement = isSignUp ? 
+                document.getElementById('registerError') : 
+                document.getElementById('loginError');
+            
+            if (errorElement) {
+                FormUtils.showError(errorElement, errorMessage);
+            }
+            
+            return false;
+        }
+    }
+};
+
+// UI handlers
+// UI handlers - CORRECTED VERSION
+const UIHandlers = {
+    setupMobileMenu: () => {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (mobileMenuBtn && navLinks) {
+        console.log('Mobile menu initialized'); // Debug
+        
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            
+            const isExpanded = navLinks.classList.contains('active');
+            console.log('Menu clicked, current state:', isExpanded); // Debug
+            
+            if (isExpanded) {
+                // Close menu
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                const menuIcon = mobileMenuBtn.querySelector('i');
+                if (menuIcon) {
+                    menuIcon.className = 'fas fa-bars';
+                }
+                console.log('Menu closed'); // Debug
+            } else {
+                // Open menu
+                navLinks.classList.add('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                const menuIcon = mobileMenuBtn.querySelector('i');
+                if (menuIcon) {
+                    menuIcon.className = 'fas fa-times';
+                }
+                console.log('Menu opened'); // Debug
+            }
+        });
+        
+        // Close menu when clicking on links
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                console.log('Menu link clicked'); // Debug
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                const menuIcon = mobileMenuBtn.querySelector('i');
+                if (menuIcon) {
+                    menuIcon.className = 'fas fa-bars';
+                }
+                
+                // Let the navigation handle the page change
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const pageId = href.substring(1);
+                    Navigation.showPage(pageId, e);
+                }
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target) && 
+                navLinks.classList.contains('active')) {
+                
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                const menuIcon = mobileMenuBtn.querySelector('i');
+                if (menuIcon) {
+                    menuIcon.className = 'fas fa-bars';
+                }
+                console.log('Menu closed by outside click'); // Debug
+            }
+        });
+        
+        // Prevent menu from closing when clicking inside it
+        navLinks.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    } else {
+        console.error('Mobile menu elements not found:', {
+            button: mobileMenuBtn,
+            menu: navLinks
+        });
+    }
+},
+    
+    setupLinkHandlers: () => {
+        document.addEventListener('click', function(e) {
+            // Handle navbar and footer links
+            if (e.target.matches('.nav-links a, .footer-column a')) {
+                const href = e.target.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const pageId = href.substring(1);
+                    
+                    // Check if user is trying to access onboarding or training without being logged in
+                    if ((pageId === 'onboarding' || pageId === 'training' || pageId === 'video-training') && !auth.currentUser) {
+                        e.preventDefault();
+                        document.getElementById('loginRequiredModal').classList.add('active');
+                        return;
+                    }
+                    
+                    Navigation.showPage(pageId, e);
+                }
+            }
+            
+            // Handle "Begin Onboarding" button
+            if (e.target.id === 'beginOnboardingBtn') {
+                e.preventDefault();
+                if (!auth.currentUser) {
+                    document.getElementById('loginRequiredModal').classList.add('active');
+                } else {
+                    Navigation.showPage('onboarding', e);
+                }
+            }
+        });
+    },
+    
+    setupWindowResize: () => {
+        window.addEventListener('resize', () => {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (window.innerWidth > 768) {
+                // Desktop view - ensure nav links are visible and mobile menu is hidden
+                if (navLinks) {
+                    navLinks.style.display = 'flex';
+                    navLinks.classList.remove('active');
+                }
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.style.display = 'none';
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    // Reset menu icon
+                    const menuIcon = mobileMenuBtn.querySelector('i');
+                    if (menuIcon) {
+                        menuIcon.className = 'fas fa-bars';
+                    }
+                }
+            } else {
+                // Mobile view - ensure nav links are hidden and mobile menu button is visible
+                if (navLinks) {
+                    navLinks.style.display = 'none';
+                }
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.style.display = 'block';
+                }
+            }
+        });
+        
+        // Initial check on page load
+        if (window.innerWidth <= 768) {
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (navLinks) navLinks.style.display = 'none';
+            if (mobileMenuBtn) mobileMenuBtn.style.display = 'block';
+        }
+    },
+    
+    setupFormHandlers: () => {
+        // Your existing form handlers remain the same
+        // Login form
+        document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorElement = document.getElementById('loginError');
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            
+            await AuthHandlers.handleLogin(email, password, errorElement, submitButton);
+        });
+        
+        // Register form
+        document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value.trim();
+            const email = document.getElementById('registerEmail').value;
+            const department = document.getElementById('registerDepartment').value.trim();
+            const manager = document.getElementById('registerManager').value.trim();
+            const salesType = document.getElementById('registerSalesType').value;
+            const reason = document.getElementById('registerReason').value.trim();
+            const errorElement = document.getElementById('registerError');
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            
+            await AuthHandlers.handleRegister(name, email, department, manager, salesType, reason, errorElement, submitButton);
+        });
+        
+        // Password reset form
+        document.getElementById('resetForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('resetEmail').value;
+            const errorElement = document.getElementById('resetError');
+            const successElement = document.getElementById('resetSuccess');
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            
+            await AuthHandlers.handlePasswordReset(email, errorElement, successElement, submitButton);
+        });
+        
+        // Google sign-in buttons
+        document.getElementById('googleSignIn')?.addEventListener('click', () => {
+            AuthHandlers.handleGoogleSignIn(false);
+        });
+        
+        document.getElementById('googleSignUp')?.addEventListener('click', () => {
+            AuthHandlers.handleGoogleSignIn(true);
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('loginRequiredModal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'loginRequiredModal') {
+                e.target.classList.remove('active');
+            }
+        });
+        
+        // Close modal with buttons
+        document.querySelectorAll('.modal-buttons a').forEach(button => {
+            button.addEventListener('click', () => {
+                document.getElementById('loginRequiredModal').classList.remove('active');
+            });
+        });
+    }
+};
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', () => {
+    Navigation.initPageFromHash();
+    configureFirebaseSecurity();
+    AuthHandlers.initAuthStateListener();
+    
+    UIHandlers.setupMobileMenu();
+    UIHandlers.setupLinkHandlers();
+    UIHandlers.setupWindowResize();
+    UIHandlers.setupFormHandlers();
+    
+    // Check for mobile view
+    if (window.innerWidth <= 768) {
+        document.getElementById('navLinks').style.display = 'none';
+        document.getElementById('mobileMenuBtn').style.display = 'block';
+    }
+
+    // Check for redirect message
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    if (message && document.getElementById('loginError')) {
+        FormUtils.showError(document.getElementById('loginError'), decodeURIComponent(message));
+    }
+});
+
+// Handle back/forward button
+window.addEventListener('popstate', Navigation.handleHashChange);
+
+
+
+</script>
 </body>
 </html>
