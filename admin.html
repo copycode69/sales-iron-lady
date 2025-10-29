@@ -683,209 +683,198 @@
         };
 
         // User management with REAL Firebase data
-        const UserManager = {
-            fetchUsers: async () => {
-                try {
-                    console.log("Fetching real users from Firebase...");
-                    
-                    // Show loading state
-                    const tableBody = document.getElementById('usersTableBody');
-                    tableBody.innerHTML = `
-                        <tr>
-                            <td colspan="7" style="text-align: center; padding: 20px;">
-                                <i class="fas fa-spinner fa-spin"></i> Loading real users from Firebase...
-                            </td>
-                        </tr>
-                    `;
+        // User management with REAL Firebase data via FastAPI
+const UserManager = {
+    fetchUsers: async () => {
+        try {
+            console.log("Fetching real users from FastAPI backend...");
+            
+            // Show loading state
+            const tableBody = document.getElementById('usersTableBody');
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" style="text-align: center; padding: 20px;">
+                        <i class="fas fa-spinner fa-spin"></i> Loading users from backend...
+                    </td>
+                </tr>
+            `;
 
-                    // Get all users from Firebase Auth
-                    const userRecords = await auth.listUsers();
-                    users = userRecords.users.map(user => ({
-                        uid: user.uid,
-                        email: user.email,
-                        displayName: user.displayName || 'Not provided',
-                        phoneNumber: user.phoneNumber,
-                        emailVerified: user.emailVerified,
-                        disabled: user.disabled,
-                        metadata: {
-                            creationTime: user.metadata.creationTime,
-                            lastSignInTime: user.metadata.lastSignInTime || user.metadata.creationTime
-                        },
-                        providerData: user.providerData.length > 0 ? user.providerData : [{ providerId: 'email' }]
-                    }));
-
-                    console.log("Fetched users:", users);
-                    
-                    UserManager.updateStats();
-                    UserManager.renderUsers();
-                    
-                    return users;
-                } catch (error) {
-                    console.error("Error fetching real users:", error);
-                    
-                    // Show error in table
-                    const tableBody = document.getElementById('usersTableBody');
-                    tableBody.innerHTML = `
-                        <tr>
-                            <td colspan="7" style="text-align: center; padding: 20px; color: var(--danger);">
-                                <i class="fas fa-exclamation-triangle"></i> Error loading users: ${error.message}
-                            </td>
-                        </tr>
-                    `;
-                    
-                    return [];
-                }
-            },
+            // Call your FastAPI backend
+            const response = await fetch('http://localhost:8000/users');
+            const data = await response.json();
             
-            updateStats: () => {
-                const totalUsers = users.length;
-                const activeUsers = users.filter(user => !user.disabled).length;
-                
-                // Calculate new users this month
-                const currentMonth = new Date().getMonth();
-                const currentYear = new Date().getFullYear();
-                const newUsers = users.filter(user => {
-                    const createdDate = new Date(user.metadata.creationTime);
-                    return createdDate.getMonth() === currentMonth && 
-                           createdDate.getFullYear() === currentYear;
-                }).length;
-
-                document.getElementById('totalUsers').textContent = totalUsers;
-                document.getElementById('activeUsers').textContent = activeUsers;
-                document.getElementById('newUsers').textContent = newUsers;
-            },
-            
-            renderUsers: () => {
-                const tableBody = document.getElementById('usersTableBody');
-                
-                if (users.length === 0) {
-                    tableBody.innerHTML = `
-                        <tr>
-                            <td colspan="7" style="text-align: center; padding: 20px;">
-                                No users found in Firebase Authentication.
-                            </td>
-                        </tr>
-                    `;
-                    return;
-                }
-                
-                tableBody.innerHTML = '';
-                
-                users.forEach(user => {
-                    const row = document.createElement('tr');
-                    
-                    // Format dates
-                    const createdDate = new Date(user.metadata.creationTime);
-                    const lastSignInDate = new Date(user.metadata.lastSignInTime);
-                    
-                    const formattedCreatedDate = createdDate.toLocaleDateString();
-                    const formattedLastSignIn = lastSignInDate.toLocaleDateString() + ' ' + lastSignInDate.toLocaleTimeString();
-                    
-                    // Determine sign-in method
-                    const provider = user.providerData && user.providerData[0] ? 
-                        user.providerData[0].providerId : 'email';
-                    
-                    const providerName = provider === 'google.com' ? 'Google' : 
-                                        provider === 'password' ? 'Email/Password' : 
-                                        provider.charAt(0).toUpperCase() + provider.slice(1);
-                    
-                    // User status
-                    const status = user.disabled ? 
-                        '<span style="color: var(--danger);"><i class="fas fa-ban"></i> Disabled</span>' : 
-                        '<span style="color: var(--success);"><i class="fas fa-check-circle"></i> Active</span>';
-                    
-                    row.innerHTML = `
-                        <td>${user.displayName}</td>
-                        <td>${user.email} ${user.emailVerified ? '<i class="fas fa-check-circle" style="color: var(--success);" title="Email Verified"></i>' : ''}</td>
-                        <td>${providerName}</td>
-                        <td>${formattedCreatedDate}</td>
-                        <td>${formattedLastSignIn}</td>
-                        <td>${status}</td>
-                        <td>
-                            <div class="action-buttons">
-                                <button class="btn btn-outline edit-user" data-id="${user.uid}">Edit</button>
-                                <button class="btn btn-danger delete-user" data-id="${user.uid}">Delete</button>
-                            </div>
-                        </td>
-                    `;
-                    
-                    tableBody.appendChild(row);
-                });
-                
-                // Add event listeners to buttons
-                document.querySelectorAll('.edit-user').forEach(button => {
-                    button.addEventListener('click', (e) => {
-                        const userId = e.target.getAttribute('data-id');
-                        UserManager.openEditModal(userId);
-                    });
-                });
-                
-                document.querySelectorAll('.delete-user').forEach(button => {
-                    button.addEventListener('click', (e) => {
-                        const userId = e.target.getAttribute('data-id');
-                        UserManager.openDeleteModal(userId);
-                    });
-                });
-            },
-            
-            openEditModal: (userId) => {
-                const user = users.find(u => u.uid === userId);
-                if (user) {
-                    document.getElementById('editUserId').value = user.uid;
-                    document.getElementById('editUserName').value = user.displayName || '';
-                    document.getElementById('editUserEmail').value = user.email;
-                    document.getElementById('editUserModal').classList.add('active');
-                }
-            },
-            
-            openDeleteModal: (userId) => {
-                currentUserToDelete = userId;
-                document.getElementById('deleteUserModal').classList.add('active');
-            },
-            
-            updateUser: async (userId, userData) => {
-                try {
-                    // Update user in Firebase Auth
-                    await auth.updateUser(userId, {
-                        displayName: userData.displayName,
-                        email: userData.email
-                    });
-                    
-                    // Update local data
-                    const userIndex = users.findIndex(u => u.uid === userId);
-                    if (userIndex !== -1) {
-                        users[userIndex] = { ...users[userIndex], ...userData };
-                        UserManager.renderUsers();
-                    }
-                    
-                    alert('User updated successfully!');
-                    return true;
-                } catch (error) {
-                    console.error("Error updating user:", error);
-                    alert('Error updating user: ' + error.message);
-                    return false;
-                }
-            },
-            
-            deleteUser: async (userId) => {
-                try {
-                    // Delete user from Firebase Auth
-                    await auth.deleteUser(userId);
-                    
-                    // Remove from local data
-                    users = users.filter(u => u.uid !== userId);
-                    UserManager.updateStats();
-                    UserManager.renderUsers();
-                    
-                    alert('User deleted successfully!');
-                    return true;
-                } catch (error) {
-                    console.error("Error deleting user:", error);
-                    alert('Error deleting user: ' + error.message);
-                    return false;
-                }
+            if (!response.ok) {
+                throw new Error(data.detail || 'Failed to fetch users');
             }
-        };
+
+            users = data.users.map(user => ({
+                uid: user.uid,
+                email: user.email,
+                displayName: user.name || 'Not provided',
+                phoneNumber: user.phone,
+                emailVerified: user.email_verified || false,
+                disabled: user.disabled || false,
+                metadata: {
+                    creationTime: user.created,
+                    lastSignInTime: user.last_login || user.created
+                },
+                providerData: user.providers ? user.providers.map(provider => ({ providerId: provider })) : [{ providerId: 'email' }]
+            }));
+
+            console.log("Fetched users:", users);
+            
+            UserManager.updateStats();
+            UserManager.renderUsers();
+            
+            return users;
+        } catch (error) {
+            console.error("Error fetching users from backend:", error);
+            
+            // Show error in table
+            const tableBody = document.getElementById('usersTableBody');
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" style="text-align: center; padding: 20px; color: var(--danger);">
+                        <i class="fas fa-exclamation-triangle"></i> Error loading users: ${error.message}
+                        <br><small>Make sure your FastAPI backend is running on port 8000</small>
+                    </td>
+                </tr>
+            `;
+            
+            return [];
+        }
+    },
+    
+    updateStats: () => {
+        const totalUsers = users.length;
+        const activeUsers = users.filter(user => !user.disabled).length;
+        
+        // Calculate new users this month
+        const currentMonth = new Date().getMonth();
+        const currentYear = new Date().getFullYear();
+        const newUsers = users.filter(user => {
+            const createdDate = new Date(user.metadata.creationTime);
+            return createdDate.getMonth() === currentMonth && 
+                   createdDate.getFullYear() === currentYear;
+        }).length;
+
+        document.getElementById('totalUsers').textContent = totalUsers;
+        document.getElementById('activeUsers').textContent = activeUsers;
+        document.getElementById('newUsers').textContent = newUsers;
+    },
+    
+    renderUsers: () => {
+        const tableBody = document.getElementById('usersTableBody');
+        
+        if (users.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" style="text-align: center; padding: 20px;">
+                        No users found.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+        
+        tableBody.innerHTML = '';
+        
+        users.forEach(user => {
+            const row = document.createElement('tr');
+            
+            // Format dates
+            const createdDate = new Date(user.metadata.creationTime);
+            const lastSignInDate = new Date(user.metadata.lastSignInTime);
+            
+            const formattedCreatedDate = createdDate.toLocaleDateString();
+            const formattedLastSignIn = lastSignInDate.toLocaleDateString() + ' ' + lastSignInDate.toLocaleTimeString();
+            
+            // Determine sign-in method
+            const provider = user.providerData && user.providerData[0] ? 
+                user.providerData[0].providerId : 'email';
+            
+            const providerName = provider === 'google.com' ? 'Google' : 
+                                provider === 'password' ? 'Email/Password' : 
+                                provider.charAt(0).toUpperCase() + provider.slice(1);
+            
+            // User status
+            const status = user.disabled ? 
+                '<span style="color: var(--danger);"><i class="fas fa-ban"></i> Disabled</span>' : 
+                '<span style="color: var(--success);"><i class="fas fa-check-circle"></i> Active</span>';
+            
+            row.innerHTML = `
+                <td>${user.displayName}</td>
+                <td>${user.email} ${user.emailVerified ? '<i class="fas fa-check-circle" style="color: var(--success);" title="Email Verified"></i>' : ''}</td>
+                <td>${providerName}</td>
+                <td>${formattedCreatedDate}</td>
+                <td>${formattedLastSignIn}</td>
+                <td>${status}</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn btn-outline edit-user" data-id="${user.uid}">Edit</button>
+                        <button class="btn btn-danger delete-user" data-id="${user.uid}">Delete</button>
+                    </div>
+                </td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
+        
+        // Add event listeners to buttons
+        document.querySelectorAll('.edit-user').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const userId = e.target.getAttribute('data-id');
+                UserManager.openEditModal(userId);
+            });
+        });
+        
+        document.querySelectorAll('.delete-user').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const userId = e.target.getAttribute('data-id');
+                UserManager.openDeleteModal(userId);
+            });
+        });
+    },
+    
+    openEditModal: (userId) => {
+        const user = users.find(u => u.uid === userId);
+        if (user) {
+            document.getElementById('editUserId').value = user.uid;
+            document.getElementById('editUserName').value = user.displayName || '';
+            document.getElementById('editUserEmail').value = user.email;
+            document.getElementById('editUserModal').classList.add('active');
+        }
+    },
+    
+    openDeleteModal: (userId) => {
+        currentUserToDelete = userId;
+        document.getElementById('deleteUserModal').classList.add('active');
+    },
+    
+    updateUser: async (userId, userData) => {
+        try {
+            // Note: You'll need to create an API endpoint for this
+            alert('Update functionality requires a backend API endpoint');
+            return false;
+        } catch (error) {
+            console.error("Error updating user:", error);
+            alert('Error updating user: ' + error.message);
+            return false;
+        }
+    },
+    
+    deleteUser: async (userId) => {
+        try {
+            // Note: You'll need to create an API endpoint for this
+            alert('Delete functionality requires a backend API endpoint');
+            return false;
+        } catch (error) {
+            console.error("Error deleting user:", error);
+            alert('Error deleting user: ' + error.message);
+            return false;
+        }
+    }
+};
 
         // Page navigation
         const Navigation = {
