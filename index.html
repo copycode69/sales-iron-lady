@@ -1190,7 +1190,7 @@
                 <div class="hero">
                     <h1 id="home-heading">Sales Excellence Starts Here</h1>
                     <p>Iron Lady Company's comprehensive onboarding and training platform transforms sales professionals into top performers through structured development and continuous assessment.</p>
-                    <a href="#onboarding" class="btn">Begin Onboarding</a>
+                    <a href="#onboarding" class="btn" id="beginOnboardingBtn">Begin Onboarding</a>
                 </div>
 
                 <div class="features">
@@ -2401,11 +2401,12 @@
             initAuthStateListener: () => {
                 auth.onAuthStateChanged((user) => {
                     if (user) {
-                        // Only redirect if coming from login page
-                        if (window.location.hash === '#login') {
-                            // Set flag for new session
-                            sessionStorage.setItem('newLogin', 'true');
-                            window.location.href = "dashboard.html";
+                        // Redirect to training after login
+                        if (window.location.hash === '#login' || sessionStorage.getItem('newLogin') === 'true') {
+                            // Clear the flag
+                            sessionStorage.removeItem('newLogin');
+                            // Redirect to training page
+                            Navigation.showPage('training');
                         }
                     }
                 });
@@ -2427,6 +2428,8 @@
 
                 try {
                     configureFirebaseSecurity();
+                    // Set flag for new login
+                    sessionStorage.setItem('newLogin', 'true');
                     await auth.signInWithEmailAndPassword(email, password);
                     return true;
                 } catch (error) {
@@ -2546,6 +2549,8 @@
                     provider.addScope('email');
                     provider.addScope('profile');
                     
+                    // Set flag for new login
+                    sessionStorage.setItem('newLogin', 'true');
                     const result = await auth.signInWithPopup(provider);
                     const user = result.user;
                     
@@ -2555,8 +2560,6 @@
                         console.log("Google sign-up completed:", user);
                     }
                     
-                    // Redirect to dashboard or show success
-                    window.location.href = "dashboard.html";
                     return true;
                 } catch (error) {
                     console.error("Google sign-in error:", error);
@@ -2613,6 +2616,16 @@
                             }
                             
                             Navigation.showPage(pageId, e);
+                        }
+                    }
+                    
+                    // Handle "Begin Onboarding" button
+                    if (e.target.id === 'beginOnboardingBtn') {
+                        e.preventDefault();
+                        if (!auth.currentUser) {
+                            document.getElementById('loginRequiredModal').classList.add('active');
+                        } else {
+                            Navigation.showPage('onboarding', e);
                         }
                     }
                 });
