@@ -875,6 +875,106 @@
             font-size: 14px;
         }
 
+        .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .modal-content {
+        background-color: white;
+        border-radius: 10px;
+        padding: 25px;
+        max-width: 600px;
+        width: 100%;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--light);
+    }
+
+    .modal-header h3 {
+        color: var(--secondary);
+        margin: 0;
+    }
+
+    .close-modal {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--dark);
+    }
+
+    .doc-content {
+        line-height: 1.6;
+    }
+
+    .doc-content h4 {
+        margin: 15px 0 10px;
+        color: var(--primary);
+    }
+
+    .doc-content ul, .doc-content ol {
+        margin-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    .doc-content p {
+        margin-bottom: 10px;
+    }
+
+    .doc-link {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 8px 15px;
+        background-color: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .doc-link:hover {
+        background-color: var(--secondary);
+    }
+
+    /* Documentation Button */
+    .doc-button {
+        background-color: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        white-space: nowrap;
+        margin-left: 10px;
+    }
+
+    .doc-button:hover {
+        background-color: var(--secondary);
+    }
+
+
 
         /* new css  */
         .status-info {
@@ -1163,6 +1263,33 @@
         margin-left: auto;
         flex-shrink: 0;
     }
+
+    .checklist-item {
+            flex-wrap: wrap;
+            position: relative;
+            padding-right: 100px; /* Space for the button */
+        }
+        
+        .doc-button {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 0;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+        }
+        
+        .checklist-item .due-date,
+        .checklist-item .status {
+            margin-top: 5px;
+        }
+        
+        .modal-content {
+            padding: 20px;
+            margin: 10px;
+        }
+    
     
  @media (min-width: 769px) {
     .mobile-menu-btn {
@@ -1233,391 +1360,418 @@
 
             <!-- Onboarding Page -->
         <section id="onboarding" class="page" aria-labelledby="onboarding-heading">
-            <div class="onboarding-section">
-                <h2 id="onboarding-heading">New Joiners Training Plan</h2>
-                
-                <div class="progress-container">
-                    <div class="progress-header">
-                        <span>Onboarding Progress</span>
-                        <span id="progress-percentage">0%</span>
+        <div class="onboarding-section">
+            <h2 id="onboarding-heading">New Joiners Training Plan</h2>
+            
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span>Onboarding Progress</span>
+                    <span id="progress-percentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <div class="checklist-container">
+                <!-- Day 1 -->
+                <div class="checklist-category">
+                    <h3>Day 1: Understanding the Flow of Work</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item1" data-category="day1">
+                        <label for="item1">
+                            <strong>Welcome Call Script</strong> - Read, listen to recordings, do mock calls, practice with AI
+                        </label>
+                        <span class="due-date">Due: Day 1</span>
+                        <span class="status status-pending">Pending</span>
+                         <button class="doc-button" data-item="item1" data-doc="docs/day1/welcome-call.pdf">View Docs</button>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item2" data-category="day1">
+                        <label for="item2">
+                            <strong>E2E Messages</strong> - Study E2E message understanding
+                        </label>
+                        <span class="due-date">Due: Day 1</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day1/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item3" data-category="day1">
+                        <label for="item3">
+                            <strong>WA Addition</strong> - Add to WhatsApp groups
+                        </label>
+                        <span class="due-date">Due: Day 1</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item3">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item4" data-category="day1">
+                        <label for="item4">
+                            <strong>Expected Outcome:</strong> Understand process flow & communication basics
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Attend fully, ask questions, take notes | Don'ts: Skip practice, join late</span>
                     </div>
                 </div>
                 
-                <div class="checklist-container">
-                    <!-- Day 1 -->
-                    <div class="checklist-category">
-                        <h3>Day 1: Understanding the Flow of Work</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item1" data-category="day1">
-                            <label for="item1">
-                                <strong>Welcome Call Script</strong> - Read, listen to recordings, do mock calls, practice with AI
-                            </label>
-                            <span class="due-date">Due: Day 1</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item2" data-category="day1">
-                            <label for="item2">
-                                <strong>E2E Messages</strong> - Study E2E message understanding
-                            </label>
-                            <span class="due-date">Due: Day 1</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item3" data-category="day1">
-                            <label for="item3">
-                                <strong>WA Addition</strong> - Add to WhatsApp groups
-                            </label>
-                            <span class="due-date">Due: Day 1</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item4" data-category="day1">
-                            <label for="item4">
-                                <strong>Expected Outcome:</strong> Understand process flow & communication basics
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Attend fully, ask questions, take notes | Don'ts: Skip practice, join late</span>
-                        </div>
+                <!-- Day 2 -->
+                <div class="checklist-category">
+                    <h3>Day 2: MC Principles</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item5" data-category="day2">
+                        <label for="item5">
+                            <strong>27 Principles Video</strong> - Watch 27 Principles Video
+                        </label>
+                        <span class="due-date">Due: Day 2</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day2/welcome-call.pdf">View Docs</button>
                     </div>
-                    
-                    <!-- Day 2 -->
-                    <div class="checklist-category">
-                        <h3>Day 2: MC Principles</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item5" data-category="day2">
-                            <label for="item5">
-                                <strong>27 Principles Video</strong> - Watch 27 Principles Video
-                            </label>
-                            <span class="due-date">Due: Day 2</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item6" data-category="day2">
-                            <label for="item6">
-                                <strong>Welcome Call Mock</strong> - Practice welcome call scenarios
-                            </label>
-                            <span class="due-date">Due: Day 2</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item7" data-category="day2">
-                            <label for="item7">
-                                <strong>Expected Outcome:</strong> Learn core guiding principles
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Watch attentively, note key points | Don'ts: Multitask during training</span>
-                        </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item6" data-category="day2">
+                        <label for="item6">
+                            <strong>Welcome Call Mock</strong> - Practice welcome call scenarios
+                        </label>
+                        <span class="due-date">Due: Day 2</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day2/welcome-call.pdf">View Docs</button>
                     </div>
-                    
-                    <!-- Day 3 -->
-                    <div class="checklist-category">
-                        <h3>Day 3: Informal Messages</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item8" data-category="day3">
-                            <label for="item8">
-                                <strong>Informal Messages</strong> - Study case studies for informal messaging
-                            </label>
-                            <span class="due-date">Due: Day 3</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item9" data-category="day3">
-                            <label for="item9">
-                                <strong>Case Studies</strong> - Analyze and practice with case studies
-                            </label>
-                            <span class="due-date">Due: Day 3</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item10" data-category="day3">
-                            <label for="item10">
-                                <strong>Expected Outcome:</strong> Build rapport-based messaging skills
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Use friendly yet professional tone</span>
-                        </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item7" data-category="day2">
+                        <label for="item7">
+                            <strong>Expected Outcome:</strong> Learn core guiding principles
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Watch attentively, note key points | Don'ts: Multitask during training</span>
                     </div>
-                    
-                    <!-- Day 4 -->
-                    <div class="checklist-category">
-                        <h3>Day 4: Key Questions and Values</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item11" data-category="day4">
-                            <label for="item11">
-                                <strong>Key Questions and Values</strong> - Practice different scenarios
-                            </label>
-                            <span class="due-date">Due: Day 4</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item12" data-category="day4">
-                            <label for="item12">
-                                <strong>Value Call</strong> - Value Call roleplay practice
-                            </label>
-                            <span class="due-date">Due: Day 4</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item13" data-category="day4">
-                            <label for="item13">
-                                <strong>Value Call Mock</strong> - Practice value call scenarios
-                            </label>
-                            <span class="due-date">Due: Day 4</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item14" data-category="day4">
-                            <label for="item14">
-                                <strong>Expected Outcome:</strong> Understand client needs & align values
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Listen actively, adapt responses | Don'ts: Over-script replies</span>
-                        </div>
+                </div>
+                
+                <!-- Day 3 -->
+                <div class="checklist-category">
+                    <h3>Day 3: Informal Messages</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item8" data-category="day3">
+                        <label for="item8">
+                            <strong>Informal Messages</strong> - Study case studies for informal messaging
+                        </label>
+                        <span class="due-date">Due: Day 3</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day3/welcome-call.pdf">View Docs</button>
                     </div>
-                    
-                    <!-- Day 5 -->
-                    <div class="checklist-category">
-                        <h3>Day 5: LEP Program Details</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item15" data-category="day5">
-                            <label for="item15">
-                                <strong>LEP Program Details</strong> - Learn program details
-                            </label>
-                            <span class="due-date">Due: Day 5</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item16" data-category="day5">
-                            <label for="item16">
-                                <strong>Pitch Call</strong> - Pitch call practice
-                            </label>
-                            <span class="due-date">Due: Day 5</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item17" data-category="day5">
-                            <label for="item17">
-                                <strong>Expected Outcome:</strong> Confidently pitch program benefits
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Memorize USPs, be concise | Don'ts: Overload with info</span>
-                        </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item9" data-category="day3">
+                        <label for="item9">
+                            <strong>Case Studies</strong> - Analyze and practice with case studies
+                        </label>
+                        <span class="due-date">Due: Day 3</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day3/welcome-call.pdf">View Docs</button>
                     </div>
-                    
-                    <!-- Day 6 -->
-                    <div class="checklist-category">
-                        <h3>Day 6: Concern Handling & CRM Usage</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item18" data-category="day6">
-                            <label for="item18">
-                                <strong>Concern Handling</strong> - Practice objection handling techniques
-                            </label>
-                            <span class="due-date">Due: Day 6</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item19" data-category="day6">
-                            <label for="item19">
-                                <strong>CRM Usage</strong> - CRM usage training
-                            </label>
-                            <span class="due-date">Due: Day 6</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item20" data-category="day6">
-                            <label for="item20">
-                                <strong>Registration Mock</strong> - Practice registration process
-                            </label>
-                            <span class="due-date">Due: Day 6</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item21" data-category="day6">
-                            <label for="item21">
-                                <strong>Expected Outcome:</strong> Handle objections & log data correctly
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Use CRM daily, update in real-time | Don'ts: Delay entries</span>
-                        </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item10" data-category="day3">
+                        <label for="item10">
+                            <strong>Expected Outcome:</strong> Build rapport-based messaging skills
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Use friendly yet professional tone</span>
                     </div>
-                    
-                    <!-- Day 7 - OJT -->
-                    <div class="checklist-category">
-                        <h3>Day 7 - OJT: SL Call Passing Practice</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item22" data-category="day7">
-                            <label for="item22">
-                                <strong>SL Call Passing Practice</strong> - Practice SL call handovers
-                            </label>
-                            <span class="due-date">Due: Day 7</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item23" data-category="day7">
-                            <label for="item23">
-                                <strong>30 Second Pitch Preparation</strong> - Practice 30-second pitch
-                            </label>
-                            <span class="due-date">Due: Day 7</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item24" data-category="day7">
-                            <label for="item24">
-                                <strong>Expected Outcome:</strong> Smooth internal handover skills
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Confirm info before passing call | Don'ts: Miss critical details</span>
-                        </div>
+                </div>
+                
+                <!-- Day 4 -->
+                <div class="checklist-category">
+                    <h3>Day 4: Key Questions and Values</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item11" data-category="day4">
+                        <label for="item11">
+                            <strong>Key Questions and Values</strong> - Practice different scenarios
+                        </label>
+                        <span class="due-date">Due: Day 4</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day4/welcome-call.pdf">View Docs</button>
                     </div>
-                    
-                    <!-- Day 8 - OJT -->
-                    <div class="checklist-category">
-                        <h3>Day 8 - OJT: Case Study Explanation</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item25" data-category="day8">
-                            <label for="item25">
-                                <strong>Case Study Explanation</strong> - Explain cases to peers/buddy
-                            </label>
-                            <span class="due-date">Due: Day 8</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item26" data-category="day8">
-                            <label for="item26">
-                                <strong>Expected Outcome:</strong> Strengthen reasoning & storytelling
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Keep it simple | Don'ts: Go off-topic</span>
-                        </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item12" data-category="day4">
+                        <label for="item12">
+                            <strong>Value Call</strong> - Value Call roleplay practice
+                        </label>
+                        <span class="due-date">Due: Day 4</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item12">View Docs</button>
                     </div>
-                    
-                    <!-- Day 9 - OJT -->
-                    <div class="checklist-category">
-                        <h3>Day 9 - OJT: Value for Different Scenarios</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item27" data-category="day9">
-                            <label for="item27">
-                                <strong>Value for Different Scenarios</strong> - Match value props to client cases
-                            </label>
-                            <span class="due-date">Due: Day 9</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item28" data-category="day9">
-                            <label for="item28">
-                                <strong>Expected Outcome:</strong> Better conversions via customization
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Adapt to client type | Don'ts: Give generic answers</span>
-                        </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item13" data-category="day4">
+                        <label for="item13">
+                            <strong>Value Call Mock</strong> - Practice value call scenarios
+                        </label>
+                        <span class="due-date">Due: Day 4</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day4/welcome-call.pdf">View Docs</button>
                     </div>
-                    
-                    <!-- Day 10 - OJT -->
-                    <div class="checklist-category">
-                        <h3>Day 10 - OJT: Pitch for Different Scenarios</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item29" data-category="day10">
-                            <label for="item29">
-                                <strong>Pitch for Different Scenarios</strong> - Practice pitches for varied client types
-                            </label>
-                            <span class="due-date">Due: Day 10</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item30" data-category="day10">
-                            <label for="item30">
-                                <strong>Expected Outcome:</strong> Confident, persuasive pitching
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Practice daily | Don'ts: Ignore feedback</span>
-                        </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item14" data-category="day4">
+                        <label for="item14">
+                            <strong>Expected Outcome:</strong> Understand client needs & align values
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Listen actively, adapt responses | Don'ts: Over-script replies</span>
                     </div>
-                    
-                    <!-- Day 11 - OJT -->
-                    <div class="checklist-category">
-                        <h3>Day 11 - OJT: Concern Handling for Different Scenarios</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item31" data-category="day11">
-                            <label for="item31">
-                                <strong>Concern Handling for Different Scenarios</strong> - Practice objections for different clients
-                            </label>
-                            <span class="due-date">Due: Day 11</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item32" data-category="day11">
-                            <label for="item32">
-                                <strong>Expected Outcome:</strong> Quick, effective concern resolution
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Stay calm, solution-oriented | Don'ts: Argue with client</span>
-                        </div>
+                </div>
+                
+                <!-- Day 5 -->
+                <div class="checklist-category">
+                    <h3>Day 5: LEP Program Details</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item15" data-category="day5">
+                        <label for="item15">
+                            <strong>LEP Program Details</strong> - Learn program details
+                        </label>
+                        <span class="due-date">Due: Day 5</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day5/welcome-call.pdf">View Docs</button>
                     </div>
-                    
-                    <!-- Day 12 - OJT -->
-                    <div class="checklist-category">
-                        <h3>Day 12 - OJT: Buddy Sign Off</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item33" data-category="day12">
-                            <label for="item33">
-                                <strong>Buddy Sign Off</strong> - Buddy signs off readiness
-                            </label>
-                            <span class="due-date">Due: Day 12</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item34" data-category="day12">
-                            <label for="item34">
-                                <strong>Train TL</strong> - Train the TL to handle new joiner
-                            </label>
-                            <span class="due-date">Due: Day 12</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item35" data-category="day12">
-                            <label for="item35">
-                                <strong>Introduce TL</strong> - Formal introduction to Team Leader
-                            </label>
-                            <span class="due-date">Due: Day 12</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item36" data-category="day12">
-                            <label for="item36">
-                                <strong>Expected Outcome:</strong> Clear handover to TL
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Complete all practice tasks | Don'ts: Leave gaps in learning</span>
-                        </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item16" data-category="day5">
+                        <label for="item16">
+                            <strong>Pitch Call</strong> - Pitch call practice
+                        </label>
+                        <span class="due-date">Due: Day 5</span>
+                        <span class="status status-pending">Pending</span>
+                      <button class="doc-button" data-item="item1" data-doc="docs/day5/welcome-call.pdf">View Docs</button>
                     </div>
-                    
-                    <!-- Day 13 -->
-                    <div class="checklist-category">
-                        <h3>Day 13: Handover to TL</h3>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item37" data-category="day13">
-                            <label for="item37">
-                                <strong>Handover to TL</strong> - Final check & transition to TL supervision
-                            </label>
-                            <span class="due-date">Due: Day 13</span>
-                            <span class="status status-pending">Pending</span>
-                        </div>
-                        <div class="checklist-item">
-                            <input type="checkbox" id="item38" data-category="day13">
-                            <label for="item38">
-                                <strong>Expected Outcome:</strong> Ready for independent work
-                            </label>
-                            <span class="due-date">Guidelines</span>
-                            <span class="status status-info">Do's: Stay in touch for support | Don'ts: Ignore follow-up guidance</span>
-                        </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item17" data-category="day5">
+                        <label for="item17">
+                            <strong>Expected Outcome:</strong> Confidently pitch program benefits
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Memorize USPs, be concise | Don'ts: Overload with info</span>
+                    </div>
+                </div>
+                
+                <!-- Day 6 -->
+                <div class="checklist-category">
+                    <h3>Day 6: Concern Handling & CRM Usage</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item18" data-category="day6">
+                        <label for="item18">
+                            <strong>Concern Handling</strong> - Practice objection handling techniques
+                        </label>
+                        <span class="due-date">Due: Day 6</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day6/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item19" data-category="day6">
+                        <label for="item19">
+                            <strong>CRM Usage</strong> - CRM usage training
+                        </label>
+                        <span class="due-date">Due: Day 6</span>
+                        <span class="status status-pending">Pending</span>
+                       <button class="doc-button" data-item="item1" data-doc="docs/day6/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item20" data-category="day6">
+                        <label for="item20">
+                            <strong>Registration Mock</strong> - Practice registration process
+                        </label>
+                        <span class="due-date">Due: Day 6</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item20">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item21" data-category="day6">
+                        <label for="item21">
+                            <strong>Expected Outcome:</strong> Handle objections & log data correctly
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Use CRM daily, update in real-time | Don'ts: Delay entries</span>
+                    </div>
+                </div>
+                
+                <!-- Day 7 - OJT -->
+                <div class="checklist-category">
+                    <h3>Day 7 - OJT: SL Call Passing Practice</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item22" data-category="day7">
+                        <label for="item22">
+                            <strong>SL Call Passing Practice</strong> - Practice SL call handovers
+                        </label>
+                        <span class="due-date">Due: Day 7</span>
+                        <span class="status status-pending">Pending</span>
+                       <button class="doc-button" data-item="item1" data-doc="docs/day7/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item23" data-category="day7">
+                        <label for="item23">
+                            <strong>30 Second Pitch Preparation</strong> - Practice 30-second pitch
+                        </label>
+                        <span class="due-date">Due: Day 7</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day7/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item24" data-category="day7">
+                        <label for="item24">
+                            <strong>Expected Outcome:</strong> Smooth internal handover skills
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Confirm info before passing call | Don'ts: Miss critical details</span>
+                    </div>
+                </div>
+                
+                <!-- Day 8 - OJT -->
+                <div class="checklist-category">
+                    <h3>Day 8 - OJT: Case Study Explanation</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item25" data-category="day8">
+                        <label for="item25">
+                            <strong>Case Study Explanation</strong> - Explain cases to peers/buddy
+                        </label>
+                        <span class="due-date">Due: Day 8</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day/8welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item26" data-category="day8">
+                        <label for="item26">
+                            <strong>Expected Outcome:</strong> Strengthen reasoning & storytelling
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Keep it simple | Don'ts: Go off-topic</span>
+                    </div>
+                </div>
+                
+                <!-- Day 9 - OJT -->
+                <div class="checklist-category">
+                    <h3>Day 9 - OJT: Value for Different Scenarios</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item27" data-category="day9">
+                        <label for="item27">
+                            <strong>Value for Different Scenarios</strong> - Match value props to client cases
+                        </label>
+                        <span class="due-date">Due: Day 9</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day9/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item28" data-category="day9">
+                        <label for="item28">
+                            <strong>Expected Outcome:</strong> Better conversions via customization
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Adapt to client type | Don'ts: Give generic answers</span>
+                    </div>
+                </div>
+                
+                <!-- Day 10 - OJT -->
+                <div class="checklist-category">
+                    <h3>Day 10 - OJT: Pitch for Different Scenarios</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item29" data-category="day10">
+                        <label for="item29">
+                            <strong>Pitch for Different Scenarios</strong> - Practice pitches for varied client types
+                        </label>
+                        <span class="due-date">Due: Day 10</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day10/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item30" data-category="day10">
+                        <label for="item30">
+                            <strong>Expected Outcome:</strong> Confident, persuasive pitching
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Practice daily | Don'ts: Ignore feedback</span>
+                    </div>
+                </div>
+                
+                <!-- Day 11 - OJT -->
+                <div class="checklist-category">
+                    <h3>Day 11 - OJT: Concern Handling for Different Scenarios</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item31" data-category="day11">
+                        <label for="item31">
+                            <strong>Concern Handling for Different Scenarios</strong> - Practice objections for different clients
+                        </label>
+                        <span class="due-date">Due: Day 11</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day11/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item32" data-category="day11">
+                        <label for="item32">
+                            <strong>Expected Outcome:</strong> Quick, effective concern resolution
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Stay calm, solution-oriented | Don'ts: Argue with client</span>
+                    </div>
+                </div>
+                
+                <!-- Day 12 - OJT -->
+                <div class="checklist-category">
+                    <h3>Day 12 - OJT: Buddy Sign Off</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item33" data-category="day12">
+                        <label for="item33">
+                            <strong>Buddy Sign Off</strong> - Buddy signs off readiness
+                        </label>
+                        <span class="due-date">Due: Day 12</span>
+                        <span class="status status-pending">Pending</span>
+                       <button class="doc-button" data-item="item1" data-doc="docs/day12/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item34" data-category="day12">
+                        <label for="item34">
+                            <strong>Train TL</strong> - Train the TL to handle new joiner
+                        </label>
+                        <span class="due-date">Due: Day 12</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day12/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item35" data-category="day12">
+                        <label for="item35">
+                            <strong>Introduce TL</strong> - Formal introduction to Team Leader
+                        </label>
+                        <span class="due-date">Due: Day 12</span>
+                        <span class="status status-pending">Pending</span>
+                        <button class="doc-button" data-item="item1" data-doc="docs/day12/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item36" data-category="day12">
+                        <label for="item36">
+                            <strong>Expected Outcome:</strong> Clear handover to TL
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Complete all practice tasks | Don'ts: Leave gaps in learning</span>
+                    </div>
+                </div>
+                
+                <!-- Day 13 -->
+                <div class="checklist-category">
+                    <h3>Day 13: Handover to TL</h3>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item37" data-category="day13">
+                        <label for="item37">
+                            <strong>Handover to TL</strong> - Final check & transition to TL supervision
+                        </label>
+                        <span class="due-date">Due: Day 13</span>
+                        <span class="status status-pending">Pending</span>
+                       <button class="doc-button" data-item="item1" data-doc="docs/day13/welcome-call.pdf">View Docs</button>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="item38" data-category="day13">
+                        <label for="item38">
+                            <strong>Expected Outcome:</strong> Ready for independent work
+                        </label>
+                        <span class="due-date">Guidelines</span>
+                        <span class="status status-info">Do's: Stay in touch for support | Don'ts: Ignore follow-up guidance</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+
 
             <!-- Training Page -->
             <section id="training" class="page" aria-labelledby="training-heading">
@@ -2879,6 +3033,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Handle back/forward button
 window.addEventListener('popstate', Navigation.handleHashChange);
+
+// Handle View Docs button clicks
+  document.querySelectorAll('.doc-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const filePath = button.getAttribute('data-doc');
+      if (filePath) {
+        window.open(filePath, '_blank');
+      } else {
+        alert('Document not available locally.');
+      }
+    });
+  });
 
 
 
