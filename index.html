@@ -660,7 +660,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            loading="lazy";
+            /* loading="lazy"; */
         }
         
         .author-info h4 {
@@ -973,6 +973,41 @@
     .doc-button:hover {
         background-color: var(--secondary);
     }
+
+    /* notes section */
+    .notes-section {
+    margin-top: 1.5em;
+    border-top: 1px solid #ddd;
+    padding-top: 1em;
+}
+
+.notes-section h4 {
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+.notes-section textarea {
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    font-size: 0.95em;
+}
+
+.save-notes-button {
+    margin-top: 0.5em;
+    padding: 0.5em 1em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-notes-button:hover {
+    background-color: #0056b3;
+}
 
 
 
@@ -1289,6 +1324,38 @@
             padding: 20px;
             margin: 10px;
         }
+
+
+
+       /* notes */
+        .notes-section {
+        margin-top: 1.5em;
+        padding: 1em;
+        border-top: 1px solid #ccc;
+        background: #fff;
+    }
+
+    .notes-section h4 {
+        font-size: 1.1em;
+        margin-bottom: 0.6em;
+        text-align: center;
+    }
+
+    .notes-section textarea {
+        width: 100%;
+        font-size: 0.95em;
+        padding: 0.7em;
+        border-radius: 5px;
+        resize: vertical;
+    }
+
+    .save-notes-button {
+        width: 100%;
+        font-size: 0.95em;
+        padding: 0.7em;
+        margin-top: 0.6em;
+    }
+
     
     
  @media (min-width: 769px) {
@@ -1373,7 +1440,7 @@
                 </div>
             </div>
             
-            <div class="checklist-container">
+            < class="checklist-container">
                 <!-- Day 1 -->
                 <div class="checklist-category">
                     <h3>Day 1: Understanding the Flow of Work</h3>
@@ -1412,7 +1479,16 @@
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Attend fully, ask questions, take notes | Don'ts: Skip practice, join late</span>
                     </div>
+                    <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day1-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day1-notes')">Save Notes</button>
+                    </div>
                 </div>
+               
+
+
                 
                 <!-- Day 2 -->
                 <div class="checklist-category">
@@ -1443,7 +1519,16 @@
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Watch attentively, note key points | Don'ts: Multitask during training</span>
                     </div>
+                     <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day2-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day2-notes')">Save Notes</button>
+                    </div>
                 </div>
+
+            
+                
                 
                 <!-- Day 3 -->
                 <div class="checklist-category">
@@ -1473,6 +1558,12 @@
                         </label>
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Use friendly yet professional tone</span>
+                    </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day3-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day3-notes')">Save Notes</button>
                     </div>
                 </div>
                 
@@ -1514,6 +1605,12 @@
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Listen actively, adapt responses | Don'ts: Over-script replies</span>
                     </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day4-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day4-notes')">Save Notes</button>
+                    </div>
                 </div>
                 
                 <!-- Day 5 -->
@@ -1544,6 +1641,12 @@
                         </label>
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Memorize USPs, be concise | Don'ts: Overload with info</span>
+                    </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day5-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day5-notes')">Save Notes</button>
                     </div>
                 </div>
                 
@@ -1585,6 +1688,12 @@
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Use CRM daily, update in real-time | Don'ts: Delay entries</span>
                     </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day6-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day6-notes')">Save Notes</button>
+                    </div>
                 </div>
                 
                 <!-- Day 7 - OJT -->
@@ -1616,6 +1725,12 @@
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Confirm info before passing call | Don'ts: Miss critical details</span>
                     </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day7-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day7-notes')">Save Notes</button>
+                    </div>
                 </div>
                 
                 <!-- Day 8 - OJT -->
@@ -1637,6 +1752,12 @@
                         </label>
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Keep it simple | Don'ts: Go off-topic</span>
+                    </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day8-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day8-notes')">Save Notes</button>
                     </div>
                 </div>
                 
@@ -1660,6 +1781,12 @@
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Adapt to client type | Don'ts: Give generic answers</span>
                     </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day9-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day9-notes')">Save Notes</button>
+                    </div>
                 </div>
                 
                 <!-- Day 10 - OJT -->
@@ -1682,6 +1809,12 @@
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Practice daily | Don'ts: Ignore feedback</span>
                     </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day10-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day10-notes')">Save Notes</button>
+                    </div>
                 </div>
                 
                 <!-- Day 11 - OJT -->
@@ -1703,6 +1836,12 @@
                         </label>
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Stay calm, solution-oriented | Don'ts: Argue with client</span>
+                    </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day11-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day11-notes')">Save Notes</button>
                     </div>
                 </div>
                 
@@ -1744,6 +1883,12 @@
                         <span class="due-date">Guidelines</span>
                         <span class="status status-info">Do's: Complete all practice tasks | Don'ts: Leave gaps in learning</span>
                     </div>
+                 <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day12-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day12-notes')">Save Notes</button>
+                    </div>
                 </div>
                 
                 <!-- Day 13 -->
@@ -1767,7 +1912,13 @@
                         <span class="status status-info">Do's: Stay in touch for support | Don'ts: Ignore follow-up guidance</span>
                     </div>
                 </div>
-            </div>
+             <!-- Notes Section -->
+                    <div class="notes-section">
+                        <h4>Notes & Feedback</h4>
+                        <textarea id="day13-notes" placeholder="Type your feedback or observations for this module..." rows="5"></textarea>
+                        <button class="save-notes-button" onclick="saveNotes('day13-notes')">Save Notes</button>
+                    </div>
+                </div>
         </div>
     </section>
 
@@ -3045,6 +3196,30 @@ window.addEventListener('popstate', Navigation.handleHashChange);
       }
     });
   });
+
+
+
+//   notes saving functionality
+
+function saveNotes(noteId) {
+    const textarea = document.getElementById(noteId);
+    const notes = textarea.value;
+    localStorage.setItem(noteId, notes);
+    alert("✅ Notes saved successfully!");
+}
+
+// Load saved notes automatically when page loads
+window.onload = function() {
+    const allTextareas = document.querySelectorAll('textarea[id$="-notes"]');
+    allTextareas.forEach(textarea => {
+        const saved = localStorage.getItem(textarea.id);
+        if (saved) {
+            textarea.value = saved;
+        }
+    });
+};
+
+
 
 
 
